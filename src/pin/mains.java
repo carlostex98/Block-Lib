@@ -1,9 +1,9 @@
 package pin;
 
 public class mains {
-    static void main(String[] args){
+    public static void main(String[] args){
 
 	System.out.println("Hello World");
 	
-}
+    }
 }
