@@ -5,5 +5,6 @@ public class indice_usuarios {
     int indice;
     indice_usuarios siguiente;
     usuarios primero_usr;
+    usuarios ultimo_usr;
     
 }

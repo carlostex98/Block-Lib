@@ -6,4 +6,5 @@ public class usuarios {
     String apellido;
     String carrera;
     String psw;
+    usuarios siguiente;
 }
