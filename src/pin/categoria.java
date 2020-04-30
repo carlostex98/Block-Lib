@@ -6,7 +6,8 @@ public class categoria {
     categoria der;
     categoria izq;
     int height;
-    categoria(String nombre) {
+    categoria(String nombre, int carnet) {
         this.nombre = nombre;
+        this.carnet=carnet;
     }
 }
