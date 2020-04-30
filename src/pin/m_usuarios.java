@@ -96,9 +96,19 @@ public class m_usuarios {
         while(actual!=null){
             if(actual.carnet==carnet){
                 //eliminamos
-                
+                if(actual.carnet==perf.primero_usr.carnet){//primero
+                    perf.primero_usr=actual.siguiente;
+                }else if(actual.carnet==perf.ultimo_usr.carnet){//ultimo
+                    a.siguiente=null;
+                    perf.ultimo_usr=a;
+                }else{//en medio
+                    b=actual.siguiente;
+                    a.siguiente=b;
+                    actual.siguiente=null;
+                }
                 break;
             }else{
+                a=actual;
                 actual=actual.siguiente;
             }
         }
