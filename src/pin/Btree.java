@@ -64,5 +64,29 @@ public class Btree {
 		x.cuenta ++;
 	}
 
+    public void nonfullInsert(BNode pp, int is){
+        int i =pp.cuenta;
+        if(pp.hoja){
+            while(i >= 1 && is < pp.isbn[i-1]){
+                pp.isbn[i] = pp.isbn[i-1];
+                i--;
+            }
+            pp.isbn[i] = is;
+            pp.cuenta ++; 
+        }else{
+            int j = 0;
+            while(j < pp.cuenta  && is > pp.isbn[j]){ 		
+                j++;
+            }
+            if(pp.hijo[j].cuenta== orden*2 - 1){
+                splitea(pp,j,pp.hijo[j]);
+                if(is > pp.isbn[j]){
+                    j++;
+                }
+            }
+            nonfullInsert(pp.hijo[j],is);
+	}
+    }
+    
     
 }
