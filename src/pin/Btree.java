@@ -132,4 +132,23 @@ public class Btree {
 
     }
 
+    public void deleteKey(Btree t, int is) {
+
+        BNode temp = new BNode(orden, null);
+        temp = busca(t.root, is);
+        if (temp.hoja && temp.cuenta > orden - 1) {
+            int i = 0;
+
+            while (is > temp.getValue(i)) {
+                i++;
+            }
+            for (int j = i; j < 2 * orden - 2; j++) {
+                temp.isbn[j] = temp.getValue(j + 1);
+            }
+            temp.cuenta--;
+        } else {
+            System.out.println("This node is either not a leaf or has less than order - 1 keys.");
+        }
+    }
+
 }
