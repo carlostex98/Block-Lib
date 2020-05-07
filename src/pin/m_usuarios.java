@@ -12,11 +12,12 @@ public class m_usuarios {
     int tmx;
 
     public m_usuarios() {
-        llenado(45);//de 0...44===45 indices
-        tmx=45;
+        //llenado(45);//de 0...44===45 indices
+        //tmx=45;
     }
 
     void llenado(int indices) {
+        tmx=indices;
         for (int i = 0; i < indices; i++) {
             add_indice(i);
         }
@@ -53,20 +54,21 @@ public class m_usuarios {
         }
     }
     
-    boolean existe_usr_loguin(int carnet, String pass){
-        boolean n=false;
+    usuarios existe_usr_loguin(int carnet, String pass){
+        //boolean n=false;
         String hpass=getMd5(pass);
         int md=carnet%tmx;
         usuarios actual=ret_indice(md).primero_usr;
+        usuarios encontrado=null;
         while(actual!=null){
             if(actual.carnet==carnet && actual.psw.equals(hpass)){
-                n=true;
+                encontrado=actual;
                 break;
             }else{
                 actual=actual.siguiente;
             }
         }
-        return n;
+        return encontrado;
     }
     
     public void edit_usr(int carnet, String nombre, String apellido, String carrera, String pass){

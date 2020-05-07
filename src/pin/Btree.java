@@ -150,5 +150,9 @@ public class Btree {
             System.out.println("This node is either not a leaf or has less than order - 1 keys.");
         }
     }
-
+    
+    public void delt_isb(Btree t, int is){
+        
+    }
+    
 }

@@ -4,7 +4,7 @@ public class isb {
     String titulo;
     String autor;
     String editorial;
-    String anio;
+    int anio;
     String edicion;
     String categoria;
     String idioma;
