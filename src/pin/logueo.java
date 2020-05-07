@@ -99,7 +99,11 @@ public class logueo extends javax.swing.JFrame {
         if(n==null){
             JOptionPane.showMessageDialog(null,"Error, usuario no existe \nVerifique sus datos");
         }else{
-            System.out.println("correcto!");
+            //System.out.println("correcto!");
+            pin.mains.nop=n;
+            escritorio e= new escritorio();
+            e.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

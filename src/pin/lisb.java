@@ -30,4 +30,10 @@ public class lisb {
             ultimo=nuevo;
         }
     }
+    public void del_libro(int isbn){
+        
+    }
+    public void ret_libro(int isbn){
+        
+    }
 }

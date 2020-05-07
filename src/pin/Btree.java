@@ -5,10 +5,13 @@ public class Btree {
     static int orden;
     BNode root;
 
-    public Btree(int orden) {
-        this.orden = orden;
-        root = new BNode(orden, null);
+    public Btree() {
+        this.orden = 5;
+        root = new BNode(5, null);
 
+    }
+    public void set_root(BNode r){
+        root=r;
     }
 
     public BNode busca(BNode root, int key) {

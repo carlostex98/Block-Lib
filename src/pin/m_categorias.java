@@ -1,6 +1,11 @@
 package pin;
 public class m_categorias {
     categoria root;
+    public m_categorias(){
+        root=null;
+    }
+    
+    
     public categoria find(String nombre) {
         categoria current = root;
         while (current != null) {
@@ -113,4 +118,7 @@ public class m_categorias {
     public int getBalance(categoria n) {
         return (n == null) ? 0 : height(n.der) - height(n.izq);
     }
+    
+    
+    
 }
