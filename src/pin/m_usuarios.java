@@ -1,5 +1,8 @@
 package pin;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -144,6 +147,52 @@ public class m_usuarios {
        }
        
        return vista;
+    }
+    
+    public void reporte_hash(){
+        indice_usuarios vista=pi_usuarios;
+        usuarios n;
+        //primero los indices
+        try {
+            PrintWriter writer = new PrintWriter("hasheo.dot", "UTF-8");
+            writer.write("digraph {\n");
+            writer.write("node [shape=box];\n ");
+            writer.write("e0[ shape = point, width = 0 ];\n" +"e1[ shape = point, width = 0 ]; \n");
+            while(vista!=null){
+                writer.write("s"+vista.indice+"i [label=\" "+Integer.toString(vista.indice) +" \" group = 1];\n");
+                
+                if(vista.siguiente!=null){
+                    writer.write("s"+vista.indice+"i ->s" +Integer.toString(vista.siguiente.indice) +"i;\n");
+                }
+                //ahora las relaciones de los usuarios
+                n=vista.primero_usr;
+                int i=2;
+                String z="";
+                if(n!=null){
+                    writer.write("s"+vista.indice+"i -> u"+Integer.toString(n.carnet)+";\n");
+                    z="{rank=same; s"+Integer.toString(vista.indice)+"i ;";
+                }
+                while(n!=null){
+                    writer.write("u"+Integer.toString(n.carnet)+"[label=\""+n.nombre+" "+n.apellido+"\\n"+Integer.toString(n.carnet)+"\\n"+n.psw+"  \" group = "+Integer.toString(i)+" ];");
+                    z+="u"+Integer.toString(n.carnet)+" ;";
+                    if(n.siguiente!=null){
+                        writer.write("u"+Integer.toString(n.carnet)+"-> u"+Integer.toString(n.siguiente.carnet)); 
+                    }
+                    n=n.siguiente;
+                    i++;
+                }
+                //añadinos el rank same
+                if(!z.equals("")){
+                    z+=" }\n";
+                    writer.write(z);
+                }
+                vista=vista.siguiente;
+            }
+            writer.write("}\n");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
 }
