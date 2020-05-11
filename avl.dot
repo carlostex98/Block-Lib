@@ -1,0 +1,12 @@
+digraph sls{
+node [shape=record];
+tacubaya[label="<C0>|tacubaya|<C1> " ]; 
+tlacuache[label="<C0>|tlacuache|<C1> " ]; 
+pompom[label="<C0>|pompom|<C1> " ]; 
+pompeya[label="<C0>|pompeya|<C1> " ]; 
+
+tacubaya:C1->tlacuache; 
+tacubaya:C0->pompom; 
+pompom:C0->pompeya; 
+
+}

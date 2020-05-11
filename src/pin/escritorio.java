@@ -107,6 +107,11 @@ public class escritorio extends javax.swing.JFrame {
         jLabel1.setText("Blockchain");
 
         jButton9.setText("Reporte Categoria");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setText("Reporte libros");
 
@@ -198,6 +203,10 @@ public class escritorio extends javax.swing.JFrame {
         //this shit reports users
         pin.mains.usuario.reporte_hash();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+       pin.mains.ctegoria.reporte_avl();
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments

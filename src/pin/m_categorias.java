@@ -1,6 +1,11 @@
 package pin;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class m_categorias {
     categoria root;
+    String ee="";
     public m_categorias(){
         root=null;
     }
@@ -119,6 +124,47 @@ public class m_categorias {
         return (n == null) ? 0 : height(n.der) - height(n.izq);
     }
     
+    public void reporte_avl(){
+        
+        try{
+            PrintWriter writer = new PrintWriter("avl.dot", "UTF-8");
+            writer.println("digraph sls{");
+            writer.println("node [shape=record];");
+            ee="";
+            nodosAvl(root);
+            writer.println(ee);
+            ee="";
+            //ahora las relaciones
+            relAvl(root);
+            writer.println(ee);
+            ee="";
+            writer.println("}");
+            writer.close();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
     
+    public void nodosAvl(categoria n){
+        if(n!=null){
+            ee += n.nombre+"[label=\"<C0>|" + n.nombre + "|<C1> \" ]; \n";   
+            nodosAvl(n.der);
+            nodosAvl(n.izq);
+        }
+    }
+    public void relAvl(categoria r) {
+        if (r != null) {
+            //data
+            if (r.der != null) {
+                ee += r.nombre+ ":C1->" + r.der.nombre + "; \n";
+            }
+            if (r.izq != null) {
+                ee += r.nombre+ ":C0->" + r.izq.nombre + "; \n";
+            }
+            relAvl(r.izq);
+            relAvl(r.der);
+        }
+    }
     
 }
