@@ -149,7 +149,7 @@ public class m_usuarios {
        return vista;
     }
     
-    public void reporte_hash(){
+    public void reporte_hash() throws InterruptedException{
         indice_usuarios vista=pi_usuarios;
         usuarios n;
         //primero los indices
@@ -190,6 +190,11 @@ public class m_usuarios {
             }
             writer.write("}\n");
             writer.close();
+            
+            Runtime rt = Runtime.getRuntime();
+            Process pr = rt.exec("dot -Tjpg hasheo.dot -o hasheo.jpg");
+            Thread.sleep(1000);
+            
         } catch (IOException e) {
             e.printStackTrace();
         }

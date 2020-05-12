@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 public class m_categorias {
     categoria root;
     String ee="";
+    String p="t";
     public m_categorias(){
         root=null;
     }
@@ -124,7 +125,7 @@ public class m_categorias {
         return (n == null) ? 0 : height(n.der) - height(n.izq);
     }
     
-    public void reporte_avl(){
+    public void reporte_avl() throws InterruptedException{
         
         try{
             PrintWriter writer = new PrintWriter("avl.dot", "UTF-8");
@@ -140,6 +141,10 @@ public class m_categorias {
             ee="";
             writer.println("}");
             writer.close();
+            
+            Runtime rt = Runtime.getRuntime();
+            Process pr = rt.exec("dot -Tjpg avl.dot -o avl.jpg");
+            Thread.sleep(1000);
         }catch (IOException e) {
             e.printStackTrace();
         }
@@ -166,5 +171,111 @@ public class m_categorias {
             relAvl(r.der);
         }
     }
+    
+    public void reporte_inorden() throws InterruptedException{
+        try{
+            PrintWriter writer = new PrintWriter("avl_inorden.dot", "UTF-8");
+            writer.println("digraph sls{");
+            writer.println("node [shape=record];");
+            ee="";
+            inord_rr(root);
+            writer.println(ee);
+            writer.println("}");
+            writer.close();
+            p="t";
+            
+            Runtime rt = Runtime.getRuntime();
+            Process pr = rt.exec("dot -Tjpg avl_inorden.dot -o avl_inorden.jpg");
+            Thread.sleep(1000);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void reporte_preorden() throws InterruptedException{
+        try{
+            PrintWriter writer = new PrintWriter("avl_preorden.dot", "UTF-8");
+            writer.println("digraph sls{");
+            writer.println("node [shape=record];");
+            ee="";
+            preord_rr(root);
+            writer.println(ee);
+            writer.println("}");
+            writer.close();
+            p="t";
+            Runtime rt = Runtime.getRuntime();
+            Process pr = rt.exec("dot -Tjpg avl_preorden.dot -o avl_preorden.jpg");
+            Thread.sleep(1000);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void reporte_postorden() throws InterruptedException{
+        try{
+            PrintWriter writer = new PrintWriter("avl_postorden.dot", "UTF-8");
+            writer.println("digraph sls{");
+            writer.println("node [shape=record];");
+            ee="";
+            postord_rr(root);
+            writer.println(ee);
+            writer.println("}");
+            writer.close();
+            p="t";
+            Runtime rt = Runtime.getRuntime();
+            Process pr = rt.exec("dot -Tjpg avl_postorden.dot -o avl_postorden.jpg");
+            Thread.sleep(1000);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void inord_rr(categoria n){
+        if(n!=null){
+            inord_rr(n.izq);
+            ee += n.nombre+"[label=\"" + n.nombre + " \" ]; \n";
+            if(p=="t"){
+                p=n.nombre;
+            }else{
+                ee+=p+" ->"+n.nombre+"\n;";
+                p=n.nombre;
+            }
+            inord_rr(n.der);
+            
+        }
+    }
+    
+    public void preord_rr(categoria n){
+        if(n!=null){
+            
+            ee += n.nombre+"[label=\"" + n.nombre + " \" ]; \n";
+            if(p=="t"){
+                p=n.nombre;
+            }else{
+                ee+=p+" ->"+n.nombre+"\n;";
+                p=n.nombre;
+            }
+            preord_rr(n.izq);
+            preord_rr(n.der);
+            
+        }
+    }
+    
+    public void postord_rr(categoria n){
+        if(n!=null){
+            postord_rr(n.izq);
+            postord_rr(n.der);
+            ee += n.nombre+"[label=\"" + n.nombre + " \" ]; \n";
+            if(p=="t"){
+                p=n.nombre;
+            }else{
+                ee+=p+" ->"+n.nombre+"\n;";
+                p=n.nombre;
+            }
+            
+            
+        }
+    }
+    
+    
+    
     
 }
