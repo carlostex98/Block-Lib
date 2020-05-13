@@ -5,10 +5,14 @@
         <group>
             <file>file:/C:/Users/ccten/Documents/NetBeansProjects/blocklibx/src/pin/categoria.java</file>
             <file>file:/C:/Users/ccten/Documents/NetBeansProjects/blocklibx/src/pin/server.java</file>
+            <file>file:/C:/Users/ccten/Documents/NetBeansProjects/blocklibx/src/pin/comon_lib.java</file>
             <file>file:/C:/Users/ccten/Documents/NetBeansProjects/blocklibx/src/pin/logueo.java</file>
             <file>file:/C:/Users/ccten/Documents/NetBeansProjects/blocklibx/src/pin/m_categorias.java</file>
+            <file>file:/C:/Users/ccten/Documents/NetBeansProjects/blocklibx/src/pin/lisb.java</file>
             <file>file:/C:/Users/ccten/Documents/NetBeansProjects/blocklibx/src/pin/mains.java</file>
             <file>file:/C:/Users/ccten/Documents/NetBeansProjects/blocklibx/src/pin/escritorio.java</file>
+            <file>file:/C:/Users/ccten/Documents/NetBeansProjects/blocklibx/src/pin/Btree.java</file>
+            <file>file:/C:/Users/ccten/Documents/NetBeansProjects/blocklibx/src/pin/BNode.java</file>
         </group>
     </open-files>
 </project-private>

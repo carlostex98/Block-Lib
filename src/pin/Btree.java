@@ -2,12 +2,12 @@ package pin;
 
 public class Btree {
 
-    static int orden;
+    static int orden=5;
     BNode root;
 
     public Btree() {
         this.orden = 5;
-        root = new BNode(5, null);
+        root = new BNode(null);
 
     }
     public void set_root(BNode r){
@@ -30,7 +30,7 @@ public class Btree {
     }
 
     public void splitea(BNode x, int i, BNode y) {
-        BNode z = new BNode(orden, null);//gotta have extra node if we are
+        BNode z = new BNode(null);//gotta have extra node if we are
         //to split.
 
         z.hoja = y.hoja;//set boolean to same as y
@@ -93,7 +93,7 @@ public class Btree {
     public void in_lib(Btree t, int is) {
         BNode r = t.root;
         if (r.cuenta == 2 * orden - 1) {
-            BNode s = new BNode(orden, null);
+            BNode s = new BNode(null);
             t.root = s;
             s.hoja = false;
             s.cuenta = 0;
@@ -121,7 +121,7 @@ public class Btree {
     }
 
     public void SearchPrintNode(Btree T, int x) {
-        BNode temp = new BNode(orden, null);
+        BNode temp = new BNode(null);
 
         temp = busca(T.root, x);
 
@@ -137,7 +137,7 @@ public class Btree {
 
     public void deleteKey(Btree t, int is) {
 
-        BNode temp = new BNode(orden, null);
+        BNode temp = new BNode(null);
         temp = busca(t.root, is);
         if (temp.hoja && temp.cuenta > orden - 1) {
             int i = 0;

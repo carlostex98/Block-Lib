@@ -285,7 +285,7 @@ public class m_categorias {
             current = compare < 0 ? current.der : current.izq;
         }
         mains.cat_curr=current;
-        mains.libros.root=current.raiz;
+        mains.libros=current.raiz;
         mains.libro_aux.primero=current.primero;
         mains.libro_aux.ultimo=current.ultimo;
     }

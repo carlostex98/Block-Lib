@@ -8,7 +8,7 @@ public class comon_lib {
     }
     
     public void nuevo_libro(int isbn, String titulo, String autor, String edit, int anio, String edicion, String cat, String idiom, int carnet){
-        //mains.libros.
+        
     }
     
 }

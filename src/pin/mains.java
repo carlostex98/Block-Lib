@@ -13,7 +13,7 @@ public class mains {
     public static String img = "";
     public static categoria cat_curr = null;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         //vars
         usuario.llenado(45);
         usuario.agregar_usuario(201700317, "Carlos", "Tenes", "Ciencias y Sistemas", "1234");
@@ -23,6 +23,23 @@ public class mains {
         ctegoria.insert("pompeya", 201700317);
         logueo loguex = new logueo();
         loguex.setVisible(true);
+        
+        Btree tree = new Btree();
+        tree.in_lib(tree, 10);
+        tree.in_lib(tree, 1);
+        tree.in_lib(tree, 109);
+        tree.root=new BNode(null);
+        tree.in_lib(tree, 20);
+        tree.in_lib(tree, 15);
+        tree.in_lib(tree, 18);
+        tree.in_lib(tree, 9);
+        tree.print(tree.root);
+        /*
+        while(true){
+            System.out.println("ja");
+            Thread.sleep(1000);
+        }*/
+        
 
     }
 }

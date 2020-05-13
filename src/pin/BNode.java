@@ -2,7 +2,7 @@ package pin;
 
 public class BNode {
 
-    static int t;  //orden
+    static int t=5;  //orden
     int cuenta; // claves
     int isbn[];  // array de valores, sin guiones, se añden despues
     BNode hijo[]; //hijos referencia
@@ -10,10 +10,11 @@ public class BNode {
     BNode parent;  //le pariente, si!, que elegancia la de francia
 
     public BNode() {
+        this.t=5;
     }
 
-    public BNode(int t, BNode parent) {
-        this.t = t;
+    public BNode(BNode parent) {
+        int t = this.t;
         this.parent = parent;
         isbn = new int[2 * t - 1];
         hijo = new BNode[2 * t];
