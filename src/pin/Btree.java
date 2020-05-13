@@ -158,4 +158,8 @@ public class Btree {
         
     }
     
+    public void insertar(int isbn){
+        //in_lib(root,isbn);
+    }
+    
 }
