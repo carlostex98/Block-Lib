@@ -2,16 +2,11 @@ package pin;
 
 public class Btree {
 
-    static int orden=5;
+    static int orden = 5;
     BNode root;
 
-    public Btree() {
-        this.orden = 5;
-        root = new BNode(null);
-
-    }
-    public void set_root(BNode r){
-        root=r;
+    public void set_root(BNode r) {
+        root = r;
     }
 
     public BNode busca(BNode root, int key) {
@@ -91,18 +86,25 @@ public class Btree {
     }
 
     public void in_lib(Btree t, int is) {
-        BNode r = t.root;
-        if (r.cuenta == 2 * orden - 1) {
-            BNode s = new BNode(null);
-            t.root = s;
-            s.hoja = false;
-            s.cuenta = 0;
-            s.hijo[0] = r;
-            splitea(s, 0, r);
-            nonfullInsert(s, is);
+
+        if (t.root == null) {
+            root = new BNode(null);
+            in_lib(t, is);
         } else {
-            nonfullInsert(r, is);
+            BNode r = t.root;
+            if (r.cuenta == 2 * orden - 1) {
+                BNode s = new BNode(null);
+                t.root = s;
+                s.hoja = false;
+                s.cuenta = 0;
+                s.hijo[0] = r;
+                splitea(s, 0, r);
+                nonfullInsert(s, is);
+            } else {
+                nonfullInsert(r, is);
+            }
         }
+
     }
 
     public void print(BNode n) {
@@ -120,6 +122,10 @@ public class Btree {
         }
     }
 
+    public void prt(){
+        print(this.root);
+    }
+    
     public void SearchPrintNode(Btree T, int x) {
         BNode temp = new BNode(null);
 
@@ -153,13 +159,13 @@ public class Btree {
             System.out.println("This node is either not a leaf or has less than order - 1 keys.");
         }
     }
-    
-    public void delt_isb(Btree t, int is){
-        
+
+    public void delt_isb(Btree t, int is) {
+
     }
-    
-    public void insertar(int isbn){
+
+    public void insertar(int isbn) {
         //in_lib(root,isbn);
     }
-    
+
 }

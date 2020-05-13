@@ -9,10 +9,6 @@ public class BNode {
     boolean hoja; //hoja o no
     BNode parent;  //le pariente, si!, que elegancia la de francia
 
-    public BNode() {
-        this.t=5;
-    }
-
     public BNode(BNode parent) {
         int t = this.t;
         this.parent = parent;

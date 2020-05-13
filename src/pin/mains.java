@@ -24,7 +24,22 @@ public class mains {
         logueo loguex = new logueo();
         loguex.setVisible(true);
         
-        Btree tree = new Btree();
+        /*ctegoria.setRoot("pompom");
+        libros.in_lib(libros, 12378);
+        libros.in_lib(libros, 1208);
+        libros.print(libros.root);
+        cat_curr.raiz=libros.root;
+        
+        ctegoria.setRoot("pompeya");
+        libros.in_lib(libros, 13);
+        libros.in_lib(libros, 123);
+        libros.print(libros.root);
+        
+        System.out.println("-----------------");
+        ctegoria.setRoot("pompom");
+        libros.print(libros.root);
+        
+        /*Btree tree = new Btree();
         tree.in_lib(tree, 10);
         tree.in_lib(tree, 1);
         tree.in_lib(tree, 109);
@@ -34,7 +49,7 @@ public class mains {
         tree.in_lib(tree, 18);
         tree.in_lib(tree, 9);
         tree.print(tree.root);
-        /*
+        
         while(true){
             System.out.println("ja");
             Thread.sleep(1000);

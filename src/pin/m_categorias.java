@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 public class m_categorias {
     categoria root;
+    
     String ee="";
     String p="t";
     public m_categorias(){
@@ -285,7 +286,9 @@ public class m_categorias {
             current = compare < 0 ? current.der : current.izq;
         }
         mains.cat_curr=current;
-        mains.libros=current.raiz;
+        
+        mains.libros.root=current.raiz;
+        
         mains.libro_aux.primero=current.primero;
         mains.libro_aux.ultimo=current.ultimo;
     }
