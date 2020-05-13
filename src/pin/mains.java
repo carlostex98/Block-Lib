@@ -4,6 +4,11 @@ public class mains {
     public static m_usuarios usuario=new m_usuarios();
     public static usuarios nop=new usuarios();
     public static m_categorias ctegoria=new m_categorias();
+    public static int state=0;
+    public static String action="";
+    public static String content="";
+    public static String img="";
+    
     
     public static void main(String[] args){
         //vars

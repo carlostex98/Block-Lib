@@ -105,63 +105,48 @@ public class reportes_avl extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        pin.mains.img="avl.jpg";
         try {
-            // TODO add your handling code here:
             pin.mains.ctegoria.reporte_avl();
         } catch (InterruptedException ex) {
             Logger.getLogger(reportes_avl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        File n = new File("avl.jpg");
-        try {
-            Desktop.getDesktop().open(n);
-        } catch (IOException ex) {
-            Logger.getLogger(reportes_avl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        image_view nuevo = new image_view();
+        nuevo.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        pin.mains.img="avl_inorden.jpg";
         try {
-            // TODO add your handling code here:
             pin.mains.ctegoria.reporte_inorden();
         } catch (InterruptedException ex) {
             Logger.getLogger(reportes_avl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        File n = new File("avl_inorden.jpg");
-        try {
-            Desktop.getDesktop().open(n);
-        } catch (IOException ex) {
-            Logger.getLogger(reportes_avl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        image_view nuevo = new image_view();
+        nuevo.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        pin.mains.img="avl_postorden.jpg";
         try {
-            // TODO add your handling code here:
             pin.mains.ctegoria.reporte_postorden();
         } catch (InterruptedException ex) {
             Logger.getLogger(reportes_avl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        File n = new File("avl_postorden.jpg");
-        try {
-            Desktop.getDesktop().open(n);
-        } catch (IOException ex) {
-            Logger.getLogger(reportes_avl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        image_view nuevo = new image_view();
+        nuevo.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        pin.mains.img="avl_preorden.jpg";
         try {
-            // TODO add your handling code here:
             pin.mains.ctegoria.reporte_preorden();
         } catch (InterruptedException ex) {
             Logger.getLogger(reportes_avl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        File n = new File("avl_preorden.jpg");
-        try {
-            Desktop.getDesktop().open(n);
-        } catch (IOException ex) {
-            Logger.getLogger(reportes_avl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        image_view nuevo = new image_view();
+        nuevo.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
