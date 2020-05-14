@@ -1,171 +1,212 @@
 package pin;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 public class Btree {
 
+    String u;
     static int orden = 5;
-    BNode root;
+    public Node root;
+    int T = 3;
 
-    public void set_root(BNode r) {
-        root = r;
+    Btree() {
+        // new root
+        root = new Node();
+        // assign the root node to be a isLeaf
+        root.isLeaf = true;
+        root.numberOfNodes = 0;
+        // initial the key value in the root to -1 (null)
+        root.key[0] = -1;
     }
 
-    public BNode busca(BNode root, int key) {
-        int i = 0;
-        while (i < root.cuenta && key > root.isbn[i]) {
-            i++;
-        }
-        if (i <= root.cuenta && key == root.isbn[i]) {
-            return root;
-        }
-        if (root.hoja) {
-            return null;
+    public void print() {
+        printBtree(root, "");
+    }
+
+    public void printBtree(Node node, String indent) {
+        if (node == null) {
+            System.out.println(indent + "The B-Tree is Empty");
         } else {
-            return busca(root.getChild(i), key);
-        }
-    }
+            System.out.println(indent + " ");
 
-    public void splitea(BNode x, int i, BNode y) {
-        BNode z = new BNode(null);//gotta have extra node if we are
-        //to split.
+            // declare a string variable
+            String childIndent = indent + "\t";
 
-        z.hoja = y.hoja;//set boolean to same as y
-
-        z.cuenta = orden - 1;//this is updated size
-
-        for (int j = 0; j < orden - 1; j++) {
-            z.isbn[j] = y.isbn[j + orden]; //copy end of y into front of z
-
-        }
-        if (!y.hoja)//if not leaf we have to reassign child nodes.
-        {
-            for (int k = 0; k < orden; k++) {
-                z.hijo[k] = y.hijo[k + orden];
+            // for loop to print the B-Tree, recursively print the B-Tree Strucure
+            for (int i = node.numberOfNodes - 1; i >= 0; i--) {
+                if (!node.isLeaf) // Recursive Call
+                {
+                    printBtree(node.children[i], childIndent);
+                }
+                // print the keys
+                if (node.key[i] > 0) {
+                    System.out.println(childIndent + node.key[i]);
+                }
+            }
+            if (!node.isLeaf) // Recirsive Call
+            {
+                printBtree(node.children[node.numberOfNodes], childIndent);
             }
         }
-        y.cuenta = orden - 1;
-
-        for (int j = x.cuenta; j > i; j--) {
-            x.hijo[j + 1] = x.hijo[j];
-        }
-        x.hijo[i + 1] = z;
-
-        for (int jp = x.cuenta; jp > i; jp--) {
-            x.isbn[jp + 1] = x.isbn[jp];
-        }
-        x.isbn[i] = y.isbn[orden - 1];
-        y.isbn[orden - 1] = 0;
-
-        for (int j = 0; j < orden - 1; j++) {
-            y.isbn[j + orden] = 0;
-        }
-        x.cuenta++;
     }
 
-    public void nonfullInsert(BNode pp, int is) {
-        int i = pp.cuenta;
-        if (pp.hoja) {
-            while (i >= 1 && is < pp.isbn[i - 1]) {
-                pp.isbn[i] = pp.isbn[i - 1];
+    public void Insertx(int key) {
+        Node r = root;
+        if (r.numberOfNodes == 2 * T - 1) {
+            Node s = new Node();
+            root = s;
+            s.isLeaf = false;
+            s.numberOfNodes = 0;
+            s.children[0] = r;
+            Split(s, 0, r);
+            _Insert(s, key);
+        } else {
+            _Insert(r, key);
+        }
+    }
+
+    final private void _Insert(Node x, int k) {
+
+        if (x.isLeaf) {
+            int i = x.numberOfNodes - 1;
+
+            while (i >= 0 && x.key[i] > k) {
+                x.key[i + 1] = x.key[i];
                 i--;
             }
-            pp.isbn[i] = is;
-            pp.cuenta++;
+
+            /*for (i = x.numberOfNodes - 1; i >= 0 && x.key[i] > k; i--) {
+
+                x.key[i + 1] = x.key[i];
+
+            }*/
+            x.key[i + 1] = k;
+            x.numberOfNodes = x.numberOfNodes + 1;
         } else {
-            int j = 0;
-            while (j < pp.cuenta && is > pp.isbn[j]) {
-                j++;
+            int i = 0;
+            for (i = x.numberOfNodes - 1; i >= 0 && k < x.key[i]; i--) {
             }
-            if (pp.hijo[j].cuenta == orden * 2 - 1) {
-                splitea(pp, j, pp.hijo[j]);
-                if (is > pp.isbn[j]) {
-                    j++;
+            ;
+            i++;
+            Node tmp = x.children[i];
+            if (tmp.numberOfNodes == 2 * T - 1) {
+                Split(x, i, tmp);
+                if (k > x.key[i]) {
+                    i++;
                 }
             }
-            nonfullInsert(pp.hijo[j], is);
+            _Insert(x.children[i], k);
         }
+
     }
 
-    public void in_lib(Btree t, int is) {
-
-        if (t.root == null) {
-            root = new BNode(null);
-            in_lib(t, is);
-        } else {
-            BNode r = t.root;
-            if (r.cuenta == 2 * orden - 1) {
-                BNode s = new BNode(null);
-                t.root = s;
-                s.hoja = false;
-                s.cuenta = 0;
-                s.hijo[0] = r;
-                splitea(s, 0, r);
-                nonfullInsert(s, is);
-            } else {
-                nonfullInsert(r, is);
+    private void Split(Node x, int pos, Node y) {
+        Node z = new Node();
+        z.isLeaf = y.isLeaf;
+        z.numberOfNodes = T - 1;
+        for (int j = 0; j < T - 1; j++) {
+            z.key[j] = y.key[j + T];
+        }
+        if (!y.isLeaf) {
+            for (int j = 0; j < T; j++) {
+                z.children[j] = y.children[j + T];
             }
         }
+        y.numberOfNodes = T - 1;
+        for (int j = x.numberOfNodes; j >= pos + 1; j--) {
+            x.children[j + 1] = x.children[j];
+        }
+        x.children[pos + 1] = z;
 
+        for (int j = x.numberOfNodes - 1; j >= pos; j--) {
+            x.key[j + 1] = x.key[j];
+        }
+        x.key[pos] = y.key[T - 1];
+        x.numberOfNodes = x.numberOfNodes + 1;
     }
 
-    public void print(BNode n) {
-        for (int i = 0; i < n.cuenta; i++) {
-            System.out.print(n.getValue(i) + " ");
+
+    
+    public void nombrar(Node n){
+        n.name="node";
+        for (int i = 0; i < n.numberOfNodes; i++) {
+            //System.out.print(n.getValue(i) + " ");
+            n.name+=Integer.toString(n.getValue(i));
         }
 
-        if (!n.hoja) {
-            for (int j = 0; j <= n.cuenta; j++) {
+        if (!n.isLeaf) {
+            for (int j = 0; j <= n.numberOfNodes; j++) {
                 if (n.getChild(j) != null) {
-                    System.out.println();
-                    print(n.getChild(j));
+                    //System.out.println();
+                    nombrar(n.getChild(j));
                 }
             }
         }
     }
-
-    public void prt(){
-        print(this.root);
+    public void crea_nodos(Node n){
+        u+=n.name+"[label=\"";
+        for (int i = 0; i < n.numberOfNodes; i++) {
+            if(i==n.numberOfNodes-1){
+                u+="<f"+Integer.toString(i)+">|"+Integer.toString(n.getValue(i))+"|<f"+Integer.toString(i+1)+">";
+            }else{
+                u+="<f"+Integer.toString(i)+">|"+Integer.toString(n.getValue(i))+"|";
+            }
+            
+        }
+        u+="\"];\n";
+        if (!n.isLeaf) {
+            for (int j = 0; j <= n.numberOfNodes; j++) {
+                if (n.getChild(j) != null) {
+                    //System.out.println();
+                    crea_nodos(n.getChild(j));
+                }
+            }
+        }
+    }
+    public void relaciones(Node n){
+        //aca esta lo chido de las relaciones ajajaj
+        //u+=n.name;
+        for (int i = 0; i <= n.numberOfNodes; i++) {
+            //idk
+            if(n.getChild(i)!=null){
+                u+=n.name+":f"+Integer.toString(i)+"->"+n.getChild(i).name+";\n";
+            }
+        }
+        if (!n.isLeaf) {
+            for (int j = 0; j <= n.numberOfNodes; j++) {
+                if (n.getChild(j) != null) {
+                    //System.out.println();
+                    relaciones(n.getChild(j));
+                }
+            }
+        }
     }
     
-    public void SearchPrintNode(Btree T, int x) {
-        BNode temp = new BNode(null);
-
-        temp = busca(T.root, x);
-
-        if (temp == null) {
-
-            System.out.println("The Key does not exist in this tree");
-        } else {
-
-            print(temp);
-        }
-
-    }
-
-    public void deleteKey(Btree t, int is) {
-
-        BNode temp = new BNode(null);
-        temp = busca(t.root, is);
-        if (temp.hoja && temp.cuenta > orden - 1) {
-            int i = 0;
-
-            while (is > temp.getValue(i)) {
-                i++;
-            }
-            for (int j = i; j < 2 * orden - 2; j++) {
-                temp.isbn[j] = temp.getValue(j + 1);
-            }
-            temp.cuenta--;
-        } else {
-            System.out.println("This node is either not a leaf or has less than order - 1 keys.");
+    
+    public void graficar_b() throws InterruptedException{
+        u="";
+        nombrar(root);
+        
+        //System.out.println(u);
+        try{
+            PrintWriter writer = new PrintWriter("arbol_b.dot", "UTF-8");
+            writer.println("digraph sls{");
+            writer.println("node [shape = record,height=.1];");
+            u="";
+            crea_nodos(root);
+            writer.println(u);
+            u="";
+            relaciones(root);
+            writer.println(u);
+            u="";
+            writer.println("}");
+            writer.close();
+            Runtime rt = Runtime.getRuntime();
+            Process pr = rt.exec("dot -Tjpg arbol_b.dot -o arbol_b.jpg");
+            Thread.sleep(1000);
+        }catch (IOException e) {
+            e.printStackTrace();
         }
     }
-
-    public void delt_isb(Btree t, int is) {
-
-    }
-
-    public void insertar(int isbn) {
-        //in_lib(root,isbn);
-    }
-
 }

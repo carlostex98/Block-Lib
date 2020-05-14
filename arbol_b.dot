@@ -1,0 +1,10 @@
+digraph sls{
+node [shape = record,height=.1];
+node10[label="<f0>|10|<f1>"];
+node13[label="<f0>|1|<f1>|3|<f2>"];
+node152039[label="<f0>|15|<f1>|20|<f2>|39|<f3>"];
+
+node10:f0->node13;
+node10:f1->node152039;
+
+}

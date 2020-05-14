@@ -21,7 +21,7 @@ public class lisb {
         nuevo.idioma = idiom;
         nuevo.carnet = carnet;
         
-        mains.libros.in_lib(mains.libros, isbn);
+        //mains.libros.in_lib(mains.libros, isbn);
         mains.cat_curr.raiz=mains.libros.root;
 
         if (primero == null) {
@@ -59,11 +59,11 @@ public class lisb {
                     vista.ant.sig=vista.sig;
                     vista.sig.ant=vista.ant;
                 }
-                mains.libros.root=new BNode(null);
+                //mains.libros.root=new BNode(null);
                 
                 isb vista2=primero;
                 while(vista2!=null){
-                    mains.libros.in_lib(mains.libros, vista2.isbn);
+                    //mains.libros.in_lib(mains.libros, vista2.isbn);
                 }
                 mains.cat_curr.raiz=mains.libros.root;
             } else {

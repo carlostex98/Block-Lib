@@ -1,12 +1,16 @@
 digraph sls{
 node [shape=record];
+popo[label="<C0>|popo|<C1> " ]; 
 tacubaya[label="<C0>|tacubaya|<C1> " ]; 
 tlacuache[label="<C0>|tlacuache|<C1> " ]; 
 pompom[label="<C0>|pompom|<C1> " ]; 
+popis[label="<C0>|popis|<C1> " ]; 
 pompeya[label="<C0>|pompeya|<C1> " ]; 
 
-tacubaya:C1->tlacuache; 
-tacubaya:C0->pompom; 
+popo:C1->tacubaya; 
+popo:C0->pompom; 
+pompom:C1->popis; 
 pompom:C0->pompeya; 
+tacubaya:C1->tlacuache; 
 
 }

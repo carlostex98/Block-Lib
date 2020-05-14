@@ -6,7 +6,7 @@ public class categoria {
     categoria der;
     categoria izq;
     int height;
-    BNode raiz;
+    Node raiz;
     isb primero;
     isb ultimo;
     categoria(String nombre, int carnet) {

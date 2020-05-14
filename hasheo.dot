@@ -86,6 +86,8 @@ s39i [label=" 39 " group = 1];
 s39i ->s40i;
 s40i [label=" 40 " group = 1];
 s40i ->s41i;
+s40i -> u2020;
+u2020[label="Carlos Mejia\n2020\n81dc9bdb52d04dc20036dbd8313ed055  " group = 2 ];{rank=same; s40i ;u2020 ; }
 s41i [label=" 41 " group = 1];
 s41i ->s42i;
 s42i [label=" 42 " group = 1];
