@@ -19,12 +19,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class escritorio extends javax.swing.JFrame {
 
+    boolean s = false;
+    int r = 0;
+
     /**
      * Creates new form escritorio
      */
     public escritorio() {
         initComponents();
         llenar_cat(mains.ctegoria.root);
+
     }
 
     /**
@@ -37,18 +41,20 @@ public class escritorio extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        n_cat = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablis = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        elim_cat = new javax.swing.JButton();
+        mod_cat = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
+        n_user = new javax.swing.JButton();
+        del_user = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,10 +65,10 @@ public class escritorio extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Nueva Categoria");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        n_cat.setText("Nueva Categoria");
+        n_cat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                n_catActionPerformed(evt);
             }
         });
 
@@ -82,16 +88,24 @@ public class escritorio extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablisMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablis);
 
-        jButton4.setText("Modo Edicion");
-
-        jButton5.setText("Eliminar Categoria");
-
-        jButton6.setText("Editar Categoria");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        elim_cat.setText("Eliminar Categoria");
+        elim_cat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                elim_catActionPerformed(evt);
+            }
+        });
+
+        mod_cat.setText("Editar Categoria");
+        mod_cat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mod_catActionPerformed(evt);
             }
         });
 
@@ -104,14 +118,30 @@ public class escritorio extends javax.swing.JFrame {
 
         jButton11.setText("Blockchain");
 
-        jButton3.setText("Nuevo usuario");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        n_user.setText("Nuevo usuario");
+        n_user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                n_userActionPerformed(evt);
             }
         });
 
-        jButton7.setText("Eliminarme");
+        del_user.setText("Eliminarme");
+        del_user.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                del_userActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Carga maisva Usuarios");
+
+        jButton3.setText("Carga masiva libros");
+
+        jButton4.setText("Modificar mis datos");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,67 +149,72 @@ public class escritorio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jSeparator2)
-                    .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                    .addComponent(elim_cat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(n_cat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator1)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(del_user, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mod_cat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(n_user, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(9, 9, 9)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(n_user)
+                        .addGap(7, 7, 7)
+                        .addComponent(jButton4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(del_user)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(n_cat)
+                        .addGap(18, 18, 18)
+                        .addComponent(mod_cat)
+                        .addGap(18, 18, 18)
+                        .addComponent(elim_cat)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton9)
                         .addGap(18, 18, 18)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74)
-                        .addComponent(jButton11))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton4)
-                            .addGap(18, 18, 18)
-                            .addComponent(jButton5)
-                            .addGap(18, 18, 18)
-                            .addComponent(jButton6))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton11))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void n_catActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n_catActionPerformed
         //agregar categoria
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre de la categoria nueva");
         pin.mains.ctegoria.insert(nombre, pin.mains.nop.carnet);
         cln();
         llenar_cat(mains.ctegoria.root);
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_n_catActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
@@ -204,15 +239,74 @@ public class escritorio extends javax.swing.JFrame {
         n.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void mod_catActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mod_catActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+        s = true;
+        r = 1;
+    }//GEN-LAST:event_mod_catActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void n_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n_userActionPerformed
         // TODO add your handling code here:
-        us_nuevo us=new us_nuevo();
+        us_nuevo us = new us_nuevo();
         us.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_n_userActionPerformed
+
+    private void elim_catActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elim_catActionPerformed
+        // TODO add your handling code here:
+        s = true;
+        r = 2;
+    }//GEN-LAST:event_elim_catActionPerformed
+
+    private void tablisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablisMouseClicked
+        // TODO add your handling code here:
+        if (s) {
+            //edicion
+            if (r==1) {
+                //editar
+                DefaultTableModel model = (DefaultTableModel) tablis.getModel();
+                int s = tablis.getSelectedRow();
+                String sl = tablis.getValueAt(s, 0).toString();
+                String nuevo=JOptionPane.showInputDialog("La categoria :"+sl+", fue seleccionada para editar inserte el nuevo nombre");
+                mains.ctegoria.delete(sl);
+                mains.ctegoria.insert(nuevo, mains.nop.carnet);
+                cln();
+                llenar_cat(mains.ctegoria.root);
+            }else if(r==2){
+                //eliminar
+                DefaultTableModel model = (DefaultTableModel) tablis.getModel();
+                int s = tablis.getSelectedRow();
+                String sl = tablis.getValueAt(s, 0).toString();
+                JOptionPane.showMessageDialog(null, "La categoria :"+sl+", fue seleccionada para eliminar");
+                mains.ctegoria.delete(sl);
+                cln();
+                llenar_cat(mains.ctegoria.root);
+            }
+            r=0;
+            
+        } else {
+            DefaultTableModel model = (DefaultTableModel) tablis.getModel();
+            int s = tablis.getSelectedRow();
+            String sl = tablis.getValueAt(s, 0).toString();
+            mains.ctegoria.setRoot(sl);
+            vista_libros n = new vista_libros();
+            n.setVisible(true);
+        }
+        s=false;
+    }//GEN-LAST:event_tablisMouseClicked
+
+    private void del_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_del_userActionPerformed
+        // adios mundo
+        mains.usuario.drop_usr(mains.nop.carnet);
+        this.setVisible(false);
+        logueo n= new logueo();
+        n.setVisible(true);
+    }//GEN-LAST:event_del_userActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // nuevo jajaj
+        Modif n=new Modif();
+        n.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,18 +360,20 @@ public class escritorio extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton del_user;
+    private javax.swing.JButton elim_cat;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JButton mod_cat;
+    private javax.swing.JButton n_cat;
+    private javax.swing.JButton n_user;
     private javax.swing.JTable tablis;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,6 +9,7 @@ public class categoria {
     Node raiz;
     isb primero;
     isb ultimo;
+    int cuenta;
     categoria(String nombre, int carnet) {
         this.nombre = nombre;
         this.carnet=carnet;

@@ -8,7 +8,7 @@ public class Btree {
     String u;
     static int orden = 5;
     public Node root;
-    int T = 3;
+    int T = 2;
 
     Btree() {
         // new root
@@ -52,6 +52,7 @@ public class Btree {
     }
 
     public void Insertx(int key) {
+        arregla_raiz();
         Node r = root;
         if (r.numberOfNodes == 2 * T - 1) {
             Node s = new Node();
@@ -66,21 +67,23 @@ public class Btree {
         }
     }
 
+    public void arregla_raiz(){
+        if(root==null){
+            root=new Node();
+        }
+    }
+    
+    
     final private void _Insert(Node x, int k) {
 
         if (x.isLeaf) {
             int i = x.numberOfNodes - 1;
 
-            while (i >= 0 && x.key[i] > k) {
+            for (i = x.numberOfNodes - 1; i >= 0 && x.key[i] > k; i--) {
+
                 x.key[i + 1] = x.key[i];
-                i--;
+
             }
-
-            /*for (i = x.numberOfNodes - 1; i >= 0 && x.key[i] > k; i--) {
-
-                x.key[i + 1] = x.key[i];
-
-            }*/
             x.key[i + 1] = k;
             x.numberOfNodes = x.numberOfNodes + 1;
         } else {
@@ -148,9 +151,9 @@ public class Btree {
         u+=n.name+"[label=\"";
         for (int i = 0; i < n.numberOfNodes; i++) {
             if(i==n.numberOfNodes-1){
-                u+="<f"+Integer.toString(i)+">|"+Integer.toString(n.getValue(i))+"|<f"+Integer.toString(i+1)+">";
+                u+="<f"+Integer.toString(i)+">|"+Integer.toString(n.getValue(i))+"\\n"+mains.libro_aux.ret_nombre(n.getValue(i))+"|<f"+Integer.toString(i+1)+">";
             }else{
-                u+="<f"+Integer.toString(i)+">|"+Integer.toString(n.getValue(i))+"|";
+                u+="<f"+Integer.toString(i)+">|"+Integer.toString(n.getValue(i))+"\\n"+mains.libro_aux.ret_nombre(n.getValue(i))+"|";
             }
             
         }

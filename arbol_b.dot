@@ -1,10 +1,10 @@
 digraph sls{
 node [shape = record,height=.1];
-node10[label="<f0>|10|<f1>"];
-node13[label="<f0>|1|<f1>|3|<f2>"];
-node152039[label="<f0>|15|<f1>|20|<f2>|39|<f3>"];
+node165[label="<f0>|165\nLas aventuras del universitario 1|<f1>"];
+node121798[label="<f0>|12\nLas aventuras del universitario|<f1>|17\nLas aventuras del universitario 3|<f2>|98\nLas aventuras del universitario 4|<f3>"];
+node7821445[label="<f0>|782\nLas aventuras del universitario final|<f1>|1445\nLas aventuras del universitario 2|<f2>"];
 
-node10:f0->node13;
-node10:f1->node152039;
+node165:f0->node121798;
+node165:f1->node7821445;
 
 }

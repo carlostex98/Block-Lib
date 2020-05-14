@@ -17,28 +17,33 @@ public class mains {
         //vars
         usuario.llenado(45);
         usuario.agregar_usuario(201700317, "Carlos", "Tenes", "Ciencias y Sistemas", "1234");
-        ctegoria.insert("tacubaya", 201700317);
-        ctegoria.insert("tlacuache", 201700317);
-        ctegoria.insert("pompom", 201700317);
-        ctegoria.insert("pompeya", 201700317);
+        //ctegoria.insert("Terror", 201700317);
+        //ctegoria.insert("Comedia", 201700317);
+        /*libro_aux.insert_l(12, "Las aventuras del universitario", "el bicho", "casa sola", 2020, "la uno", "Comedia","Espanolo", 201700317);
+        libro_aux.insert_l(165, "Las aventuras del universitario 1", "el bicho", "casa sola", 2020, "la uno", "Comedia","Espanolo", 201700317);
+        libro_aux.insert_l(1445, "Las aventuras del universitario 2", "el bicho", "casa sola", 2020, "la uno", "Comedia","Espanolo", 201700317);
+        libro_aux.insert_l(17, "Las aventuras del universitario 3", "el bicho", "casa sola", 2020, "la uno", "Comedia","Espanolo", 201700317);
+        libro_aux.insert_l(98, "Las aventuras del universitario 4", "el bicho", "casa sola", 2020, "la uno", "Comedia","Espanolo", 201700317);
+        libro_aux.insert_l(782, "Las aventuras del universitario final", "el bicho", "casa sola", 2020, "la uno", "Comedia","Espanolo", 201700317);*/
         logueo loguex = new logueo();
         loguex.setVisible(true);
         
         //ctegoria.setRoot("pompom");
-        libros.Insertx(10);
-        libros.Insertx(15);
+        //libros.Insertx(10);
+        //libros.Insertx(15);
         //libros.print(libros.root);
         //libros.root=new Node();
         
         //ctegoria.setRoot("pompeya");
-        libros.Insertx(20);
-        libros.Insertx(1);
-        libros.Insertx(3);
-        libros.Insertx(39);
+        //libros.Insertx(20);
+        //libros.Insertx(1);
+        //libros.Insertx(3);
+       
+        
         //cat_curr.raiz=libros.root;
-        libros.print();
+        //libros.print();
         //libros.print(libros.root);
-        libros.graficar_b();
+        //libros.graficar_b();
         
         //System.out.println("-----------------");
         //ctegoria.setRoot("pompom");

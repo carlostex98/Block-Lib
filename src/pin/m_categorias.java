@@ -2,6 +2,7 @@ package pin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.swing.JOptionPane;
 
 public class m_categorias {
     categoria root;
@@ -12,6 +13,20 @@ public class m_categorias {
         root=null;
     }
     
+    
+    public boolean exixste(String nombre){
+        categoria current = root;
+        boolean n=false;
+        while (current != null) {
+            if (current.nombre.equals(nombre)) {
+                n=true;
+                break;
+            }
+            int compare = current.nombre.compareTo(nombre);  
+            current = compare < 0 ? current.der : current.izq;
+        }
+        return n;
+    }
     
     public categoria find(String nombre) {
         categoria current = root;
@@ -45,6 +60,7 @@ public class m_categorias {
             node.der = insert(node.der, nombre, carnet);
         } else {
             //llave duplicada
+            JOptionPane.showMessageDialog(null, "La categoria ya existe: "+nombre);
         }
         return rebalance(node);
     }
