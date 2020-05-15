@@ -1,5 +1,12 @@
 package pin;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import org.json.*;
+
 public class mains {
 
     public static m_usuarios usuario = new m_usuarios();
@@ -12,43 +19,40 @@ public class mains {
     public static String content = "";
     public static String img = "";
     public static categoria cat_curr = null;
+    public static guarda_datos x=new guarda_datos();
 
     public static void main(String[] args) throws InterruptedException {
         //vars
         usuario.llenado(45);
         usuario.agregar_usuario(201700317, "Carlos", "Tenes", "Ciencias y Sistemas", "1234");
         //ctegoria.insert("Terror", 201700317);
-        //ctegoria.insert("Comedia", 201700317);
-        /*libro_aux.insert_l(12, "Las aventuras del universitario", "el bicho", "casa sola", 2020, "la uno", "Comedia","Espanolo", 201700317);
+        ctegoria.insert("Comedia", 201700317);
+        libro_aux.insert_l(12, "Las aventuras del universitario", "el bicho", "casa sola", 2020, "la uno", "Comedia","Espanolo", 201700317);
         libro_aux.insert_l(165, "Las aventuras del universitario 1", "el bicho", "casa sola", 2020, "la uno", "Comedia","Espanolo", 201700317);
         libro_aux.insert_l(1445, "Las aventuras del universitario 2", "el bicho", "casa sola", 2020, "la uno", "Comedia","Espanolo", 201700317);
         libro_aux.insert_l(17, "Las aventuras del universitario 3", "el bicho", "casa sola", 2020, "la uno", "Comedia","Espanolo", 201700317);
         libro_aux.insert_l(98, "Las aventuras del universitario 4", "el bicho", "casa sola", 2020, "la uno", "Comedia","Espanolo", 201700317);
-        libro_aux.insert_l(782, "Las aventuras del universitario final", "el bicho", "casa sola", 2020, "la uno", "Comedia","Espanolo", 201700317);*/
+        libro_aux.insert_l(782, "Las aventuras del universitario final", "el bicho", "casa sola", 2020, "la uno", "Comedia","Espanolo", 201700317);
         logueo loguex = new logueo();
         loguex.setVisible(true);
-        
+        //x.general();
+
         //ctegoria.setRoot("pompom");
         //libros.Insertx(10);
         //libros.Insertx(15);
         //libros.print(libros.root);
         //libros.root=new Node();
-        
         //ctegoria.setRoot("pompeya");
         //libros.Insertx(20);
         //libros.Insertx(1);
         //libros.Insertx(3);
-       
-        
         //cat_curr.raiz=libros.root;
         //libros.print();
         //libros.print(libros.root);
         //libros.graficar_b();
-        
         //System.out.println("-----------------");
         //ctegoria.setRoot("pompom");
         //libros.print(libros.root);
-        
         /*Btree tree = new Btree();
         tree.in_lib(tree, 10);
         tree.in_lib(tree, 1);
@@ -64,7 +68,23 @@ public class mains {
             System.out.println("ja");
             Thread.sleep(1000);
         }*/
-        
+        //prueba get ip
+        /*try {
+            URL url = new URL("http://502tec.com/eddx/index.php");
+            URLConnection conn = url.openConnection();
+            conn.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
+            //System.out.println("Protocol: " + url.toString());
+             BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+             
+            String line;
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
+            }
+            in.close();
 
+        } catch (Exception e) {
+            System.out.println(e);
+        }*/
     }
+
 }
