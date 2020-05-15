@@ -84,7 +84,9 @@ public class m_usuarios {
                 actual.nombre=nombre;
                 actual.apellido=apellido;
                 actual.carrera=carrera;
-                actual.psw=getMd5(pass);
+                if(pass.length()!=0){
+                    actual.psw=getMd5(pass);
+                }
                 break;
             }else{
                 actual=actual.siguiente;

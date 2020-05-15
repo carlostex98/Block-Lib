@@ -5,6 +5,8 @@
  */
 package pin;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ccten
@@ -22,7 +24,7 @@ public class Modif extends javax.swing.JFrame {
         nombre.setText(n.nombre);
         apellido.setText(n.apellido);
         carrera.setText(n.carrera);
-        pass.setText(n.psw);
+        //pass.setText(n.psw);
         
     }
 
@@ -133,6 +135,7 @@ public class Modif extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         mains.usuario.edit_usr(Integer.parseInt(carnet.getText()), nombre.getText(), apellido.getText(), carrera.getText(), pass.getText());
+        JOptionPane.showMessageDialog(null, "Datos modificados!");
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

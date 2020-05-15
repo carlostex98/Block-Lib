@@ -7,6 +7,7 @@ package pin;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,6 +19,9 @@ public class vista_libros extends javax.swing.JFrame {
     /**
      * Creates new form vista_libros
      */
+    
+    boolean s = false;
+    int r = 0;
     
     public vista_libros() {
         initComponents();
@@ -50,6 +54,7 @@ public class vista_libros extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         tablis.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -59,6 +64,11 @@ public class vista_libros extends javax.swing.JFrame {
                 "ISBN", "Titulo"
             }
         ));
+        tablis.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablisMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablis);
 
         jButton1.setText("Nuevo libro");
@@ -71,8 +81,25 @@ public class vista_libros extends javax.swing.JFrame {
         jButton2.setText("Editar libro");
 
         jButton3.setText("Eliminar libro");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Reporte libro");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Refrescar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,7 +111,8 @@ public class vista_libros extends javax.swing.JFrame {
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(28, Short.MAX_VALUE))
@@ -101,7 +129,9 @@ public class vista_libros extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4))
+                        .addComponent(jButton4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton5))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
@@ -110,14 +140,74 @@ public class vista_libros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        n_libro n=new n_libro();
+        n.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
         try {
             //form de libro
             mains.libros.graficar_b();
         } catch (InterruptedException ex) {
             Logger.getLogger(vista_libros.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        cln();
+        load_b();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        s = true;
+        r = 2;
+       
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void tablisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablisMouseClicked
+        // TODO add your handling code here:
+        if (s) {
+            //edicion
+            if (r==1) {
+                //editar
+                DefaultTableModel model = (DefaultTableModel) tablis.getModel();
+                int s = tablis.getSelectedRow();
+                String sl = tablis.getValueAt(s, 0).toString();
+                String nuevo=JOptionPane.showInputDialog("La categoria :"+sl+", fue seleccionada para editar inserte el nuevo nombre");
+                mains.ctegoria.delete(sl);
+                mains.ctegoria.insert(nuevo, mains.nop.carnet);
+                cln();
+                //llenar_cat(mains.ctegoria.root);
+            }else if(r==2){
+                //eliminar
+                DefaultTableModel model = (DefaultTableModel) tablis.getModel();
+                int s = tablis.getSelectedRow();
+                String sl = tablis.getValueAt(s, 0).toString();
+                mains.libro_aux.del_libro(Integer.parseInt(sl));
+                JOptionPane.showMessageDialog(null, "El libro: "+sl+", fue seleccionado para eliminar");
+                
+                cln();
+                load_b();
+            }
+            r=0;
+            
+        } else {
+            DefaultTableModel model = (DefaultTableModel) tablis.getModel();
+            int s = tablis.getSelectedRow();
+            String sl = tablis.getValueAt(s, 0).toString();
+            mains.libro_aux.print_jop(Integer.parseInt(sl));
+        }
+        s=false;
+    }//GEN-LAST:event_tablisMouseClicked
+
+    public void cln() {
+        DefaultTableModel model = (DefaultTableModel) tablis.getModel();
+        model.setRowCount(0);
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -158,6 +248,7 @@ public class vista_libros extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablis;
     // End of variables declaration//GEN-END:variables
