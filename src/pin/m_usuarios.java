@@ -57,6 +57,25 @@ public class m_usuarios {
         }
     }
     
+    void agregar_sinhash(int carnet, String nombre, String apellido, String carrera, String pass) {
+        usuarios nuevo_usr = new usuarios();
+        nuevo_usr.carnet=carnet;
+        nuevo_usr.nombre=nombre;
+        nuevo_usr.apellido=apellido;
+        nuevo_usr.carrera=carrera;
+        nuevo_usr.psw=pass;
+        //manejamos la colision
+        int md=carnet%tmx;
+        indice_usuarios actual=ret_indice(md);
+        if(actual.primero_usr==null){
+            actual.primero_usr=nuevo_usr;
+            actual.ultimo_usr=nuevo_usr;
+        }else{
+            actual.ultimo_usr.siguiente=nuevo_usr;
+            actual.ultimo_usr=nuevo_usr;
+        }
+    }
+    
     usuarios existe_usr_loguin(int carnet, String pass){
         //boolean n=false;
         String hpass=getMd5(pass);

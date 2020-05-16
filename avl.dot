@@ -1,8 +1,24 @@
 digraph sls{
 node [shape=record];
-papas[label="<C0>|papas\n0|<C1> " ]; 
-Frijol[label="<C0>|Frijol\n0|<C1> " ]; 
+Informativos[label="<C0>|Informativos\n19|<C1> " ]; 
+Lírico[label="<C0>|Lírico\n13|<C1> " ]; 
+Sagas[label="<C0>|Sagas\n2|<C1> " ]; 
+Épico[label="<C0>|Épico\n8|<C1> " ]; 
+Revista[label="<C0>|Revista\n6|<C1> " ]; 
+Literatura[label="<C0>|Literatura\n9|<C1> " ]; 
+Consulta[label="<C0>|Consulta\n12|<C1> " ]; 
+Ensayo[label="<C0>|Ensayo\n12|<C1> " ]; 
+Drama[label="<C0>|Drama\n16|<C1> " ]; 
+Biografia[label="<C0>|Biografia\n3|<C1> " ]; 
 
-papas:C0->Frijol; 
+Informativos:C1->Lírico; 
+Informativos:C0->Consulta; 
+Consulta:C1->Ensayo; 
+Consulta:C0->Biografia; 
+Ensayo:C0->Drama; 
+Lírico:C1->Sagas; 
+Lírico:C0->Literatura; 
+Sagas:C1->Épico; 
+Sagas:C0->Revista; 
 
 }

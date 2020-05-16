@@ -6,10 +6,14 @@
 package pin;
 
 import java.awt.Desktop;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -57,6 +61,11 @@ public class escritorio extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jButton1.setText("Reporte usuarios");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -133,8 +142,18 @@ public class escritorio extends javax.swing.JFrame {
         });
 
         jButton2.setText("Carga maisva Usuarios");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Carga masiva libros");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Modificar mis datos");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -261,28 +280,28 @@ public class escritorio extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (s) {
             //edicion
-            if (r==1) {
+            if (r == 1) {
                 //editar
                 DefaultTableModel model = (DefaultTableModel) tablis.getModel();
                 int s = tablis.getSelectedRow();
                 String sl = tablis.getValueAt(s, 0).toString();
-                String nuevo=JOptionPane.showInputDialog("La categoria :"+sl+", fue seleccionada para editar inserte el nuevo nombre");
+                String nuevo = JOptionPane.showInputDialog("La categoria :" + sl + ", fue seleccionada para editar inserte el nuevo nombre");
                 mains.ctegoria.delete(sl);
                 mains.ctegoria.insert(nuevo, mains.nop.carnet);
                 cln();
                 llenar_cat(mains.ctegoria.root);
-            }else if(r==2){
+            } else if (r == 2) {
                 //eliminar
                 DefaultTableModel model = (DefaultTableModel) tablis.getModel();
                 int s = tablis.getSelectedRow();
                 String sl = tablis.getValueAt(s, 0).toString();
-                JOptionPane.showMessageDialog(null, "La categoria :"+sl+", fue seleccionada para eliminar");
+                JOptionPane.showMessageDialog(null, "La categoria :" + sl + ", fue seleccionada para eliminar");
                 mains.ctegoria.delete(sl);
                 cln();
                 llenar_cat(mains.ctegoria.root);
             }
-            r=0;
-            
+            r = 0;
+
         } else {
             DefaultTableModel model = (DefaultTableModel) tablis.getModel();
             int s = tablis.getSelectedRow();
@@ -291,22 +310,80 @@ public class escritorio extends javax.swing.JFrame {
             vista_libros n = new vista_libros();
             n.setVisible(true);
         }
-        s=false;
+        s = false;
     }//GEN-LAST:event_tablisMouseClicked
 
     private void del_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_del_userActionPerformed
         // adios mundo
         mains.usuario.drop_usr(mains.nop.carnet);
         this.setVisible(false);
-        logueo n= new logueo();
+        logueo n = new logueo();
         n.setVisible(true);
     }//GEN-LAST:event_del_userActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // nuevo jajaj
-        Modif n=new Modif();
+        Modif n = new Modif();
         n.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        int seleccion = fileChooser.showOpenDialog(this);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File fichero = fileChooser.getSelectedFile();
+
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(fichero));
+                String st;
+                String em = "";
+                while ((st = br.readLine()) != null) {
+                    em += st;
+                }
+                //System.out.println(em);
+                mains.x.lee_libros(em);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(escritorio.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(escritorio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+
+        cln();
+        llenar_cat(mains.ctegoria.root);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        int seleccion = fileChooser.showOpenDialog(this);
+        if (seleccion == JFileChooser.APPROVE_OPTION) {
+            File fichero = fileChooser.getSelectedFile();
+
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(fichero));
+                String st;
+                String em = "";
+                while ((st = br.readLine()) != null) {
+                    em += st;
+                }
+                //System.out.println(em);
+                mains.x.lee_usuarios(em);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(escritorio.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(escritorio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        mains.x.general();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -325,13 +402,17 @@ public class escritorio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(escritorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(escritorio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(escritorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(escritorio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(escritorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(escritorio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(escritorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(escritorio.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

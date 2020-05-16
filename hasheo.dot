@@ -6,8 +6,12 @@ s0i [label=" 0 " group = 1];
 s0i ->s1i;
 s1i [label=" 1 " group = 1];
 s1i ->s2i;
+s1i -> u201503476;
+u201503476[label="Ricardo Cutz\n201503476\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s1i ;u201503476 ; }
 s2i [label=" 2 " group = 1];
 s2i ->s3i;
+s2i -> u201503477;
+u201503477[label="Juanito Hernandez\n201503477\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s2i ;u201503477 ; }
 s3i [label=" 3 " group = 1];
 s3i ->s4i;
 s4i [label=" 4 " group = 1];
@@ -52,6 +56,8 @@ s22i [label=" 22 " group = 1];
 s22i ->s23i;
 s23i [label=" 23 " group = 1];
 s23i ->s24i;
+s23i -> u202005878;
+u202005878[label="Antonio Hernandez\n202005878\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s23i ;u202005878 ; }
 s24i [label=" 24 " group = 1];
 s24i ->s25i;
 s25i [label=" 25 " group = 1];
@@ -86,8 +92,6 @@ s39i [label=" 39 " group = 1];
 s39i ->s40i;
 s40i [label=" 40 " group = 1];
 s40i ->s41i;
-s40i -> u2020;
-u2020[label="Carlos Mejia\n2020\n81dc9bdb52d04dc20036dbd8313ed055  " group = 2 ];{rank=same; s40i ;u2020 ; }
 s41i [label=" 41 " group = 1];
 s41i ->s42i;
 s42i [label=" 42 " group = 1];
