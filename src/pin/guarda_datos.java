@@ -126,7 +126,7 @@ public class guarda_datos {
         File file = new File("datos.json");
         boolean exists = file.exists();
         if (exists) {
-            System.out.println("yes");
+            //System.out.println("yes");
             BufferedReader br = new BufferedReader(new FileReader(file));
 
             String st;
