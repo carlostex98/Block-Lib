@@ -21,6 +21,8 @@ public class mains {
     public static String img = "";
     public static categoria cat_curr = null;
     public static guarda_datos x=new guarda_datos();
+    public static block_generator genera=new block_generator();
+    public static m_bloques gbloque=new m_bloques();
 
     public static void main(String[] args) throws InterruptedException, IOException {
         //vars
@@ -37,6 +39,10 @@ public class mains {
         x.lee_datos();
         logueo loguex = new logueo();
         loguex.setVisible(true);
+        JSONObject obj = new JSONObject();
+        obj.put("DATA", "minombre");
+        genera.recibe_bloque(obj.toString());
+        //genera.cat_nuevo("Comedia");
         
         /*try {
             URL url = new URL("http://502tec.com/eddx/index.php");

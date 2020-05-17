@@ -229,6 +229,7 @@ public class escritorio extends javax.swing.JFrame {
     private void n_catActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n_catActionPerformed
         //agregar categoria
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre de la categoria nueva");
+        mains.genera.cat_nuevo(nombre);
         pin.mains.ctegoria.insert(nombre, pin.mains.nop.carnet);
         cln();
         llenar_cat(mains.ctegoria.root);
@@ -260,6 +261,7 @@ public class escritorio extends javax.swing.JFrame {
 
     private void mod_catActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mod_catActionPerformed
         // TODO add your handling code here:
+        //disable
         s = true;
         r = 1;
     }//GEN-LAST:event_mod_catActionPerformed
