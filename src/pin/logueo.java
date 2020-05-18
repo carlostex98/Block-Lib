@@ -157,7 +157,7 @@ public class logueo extends javax.swing.JFrame {
         //mandamos el cierre
         mains.state = 99;
         try {
-            URL url = new URL("http://502tec.com/eddx/index.php?a=2&b=0");
+            URL url = new URL("http://502tec.com/eddx/index.php?a=5&b=0");
             URLConnection conn = url.openConnection();
             conn.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
             //System.out.println("Protocol: " + url.toString());
