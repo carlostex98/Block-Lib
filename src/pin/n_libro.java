@@ -185,6 +185,7 @@ public class n_libro extends javax.swing.JFrame {
                     //checkeamos que la
                     mains.libro_aux.insert_l(Integer.parseInt(isbn.getText()), titulo.getText(), autor.getText(), editorial.getText(), Integer.parseInt(anio.getText()), edicion.getText(), mains.cat_curr.nombre, idioma.getText(), mains.nop.carnet);
                     JOptionPane.showMessageDialog(null, "Libro ingresado");
+                    mains.genera.libro_crea(Integer.parseInt(isbn.getText()), titulo.getText(), autor.getText(), editorial.getText(), Integer.parseInt(anio.getText()), edicion.getText(), mains.cat_curr.nombre, idioma.getText(), mains.nop.carnet);
                 }
             } else {
                 //error

@@ -35,6 +35,7 @@ public class mains {
         logueo loguex = new logueo();
         loguex.setVisible(true);
         concon();
+        
 
     }
 
@@ -80,16 +81,16 @@ public class mains {
                         //no hay bloques
                         if (!ee.equals("[]")) {
                             JSONObject obj = new JSONObject(ee);
-                            //genera.recibe_bloque(ee);
-                            gbloque.nuevo_bloque(obj.getInt("INDEX"), obj.getString("TIMESTAMP"), obj.getString("DATA"), obj.getInt("NONCE"), obj.getString("PREVIOUSHASH"), obj.getString("HASH"));
+                            genera.recibe_bloque(ee);
+                            gbloque.nuevo_bloque(obj.getInt("INDEX"), obj.getString("TIMESTAMP"), obj.get("DATA").toString(), obj.getInt("NONCE"), obj.getString("PREVIOUSHASH"), obj.getString("HASH"));
                         }
                     } else {
                         if (!ee.equals("[]")) {
                             //System.out.println(ee);
                             JSONObject obj = new JSONObject(ee);
                             if (obj.getInt("INDEX") != gbloque.ultimo.id) {
-                                //genera.recibe_bloque(ee);
-                                gbloque.nuevo_bloque(obj.getInt("INDEX"), obj.getString("TIMESTAMP"), obj.getString("DATA"), obj.getInt("NONCE"), obj.getString("PREVIOUSHASH"), obj.getString("HASH"));
+                                genera.recibe_bloque(ee);
+                                gbloque.nuevo_bloque(obj.getInt("INDEX"), obj.getString("TIMESTAMP"), obj.get("DATA").toString(), obj.getInt("NONCE"), obj.getString("PREVIOUSHASH"), obj.getString("HASH"));
                             }
                         }
                     }
@@ -127,7 +128,7 @@ public class mains {
                     URL url = new URL("http://502tec.com/eddx/index.php?a=3&b=" + content);
                     //System.out.println("http://502tec.com/eddx/index.php?a=3&b="+content);
                     URLConnection conn = url.openConnection();
-                    conn.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
+                    conn.addRequestProperty("User-Agent", "Mozilla/5.0 (compatible; MSIE 6.0; Windows NT 5.0)");
                     //System.out.println("Protocol: " + url.toString());
                     BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 

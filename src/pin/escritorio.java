@@ -107,14 +107,14 @@ public class escritorio extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablis);
 
-        elim_cat.setText("Eliminar Categoria");
+        elim_cat.setText("Refrescar");
         elim_cat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 elim_catActionPerformed(evt);
             }
         });
 
-        mod_cat.setText("Editar Categoria");
+        mod_cat.setText("Eliminar categoria");
         mod_cat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mod_catActionPerformed(evt);
@@ -266,7 +266,7 @@ public class escritorio extends javax.swing.JFrame {
         // TODO add your handling code here:
         //disable
         s = true;
-        r = 1;
+        r = 2;
     }//GEN-LAST:event_mod_catActionPerformed
 
     private void n_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_n_userActionPerformed
@@ -277,8 +277,8 @@ public class escritorio extends javax.swing.JFrame {
 
     private void elim_catActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elim_catActionPerformed
         // TODO add your handling code here:
-        s = true;
-        r = 2;
+        cln();
+        llenar_cat(mains.ctegoria.root);
     }//GEN-LAST:event_elim_catActionPerformed
 
     private void tablisMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablisMouseClicked
@@ -304,6 +304,7 @@ public class escritorio extends javax.swing.JFrame {
                 mains.ctegoria.delete(sl);
                 cln();
                 llenar_cat(mains.ctegoria.root);
+                mains.genera.elim_cat(sl);
             }
             r = 0;
 
@@ -324,6 +325,7 @@ public class escritorio extends javax.swing.JFrame {
         this.setVisible(false);
         logueo n = new logueo();
         n.setVisible(true);
+        mains.genera.elim_usr(mains.nop.carnet);
     }//GEN-LAST:event_del_userActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -402,7 +404,6 @@ public class escritorio extends javax.swing.JFrame {
                 ee += line;
             }
             in.close();
-            
 
         } catch (Exception e) {
             System.out.println(e);

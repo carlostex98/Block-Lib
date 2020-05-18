@@ -132,6 +132,7 @@ public class us_nuevo extends javax.swing.JFrame {
         String e=pass.getText();
         mains.usuario.agregar_usuario(a, b, c, d, e);
         JOptionPane.showMessageDialog(null,"Usuario creado");
+        mains.genera.envia_usr(a, b, c, d, e);
         
         
     }//GEN-LAST:event_jButton1ActionPerformed

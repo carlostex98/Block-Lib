@@ -136,6 +136,7 @@ public class Modif extends javax.swing.JFrame {
         // TODO add your handling code here:
         mains.usuario.edit_usr(Integer.parseInt(carnet.getText()), nombre.getText(), apellido.getText(), carrera.getText(), pass.getText());
         JOptionPane.showMessageDialog(null, "Datos modificados!");
+        mains.genera.mod_usr(Integer.parseInt(carnet.getText()), nombre.getText(), apellido.getText(), carrera.getText(), pass.getText());
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -199,6 +199,7 @@ public class vista_libros extends javax.swing.JFrame {
                 mains.libro_aux.del_libro(Integer.parseInt(sl));
                 JOptionPane.showMessageDialog(null, "El libro: " + sl + ", fue seleccionado para eliminar");
                 mains.genera.libro_elimina(Integer.parseInt(sl));
+                
                 cln();
                 load_b();
             }

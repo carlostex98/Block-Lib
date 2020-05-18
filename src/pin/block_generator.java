@@ -308,36 +308,36 @@ public class block_generator {
         
         JSONObject obj2 = new JSONObject(obj.get("DATA").toString());
         if(obj2.has("CREAR_USUARIO")){
-            JSONObject obj4 = new JSONObject(obj2.get("CREAR_USUARIO"));
+            JSONObject obj4 = new JSONObject(obj2.get("CREAR_USUARIO").toString());
             mains.usuario.agregar_usuario(obj4.getInt("CARNET"), obj4.getString("NOMBRE"), obj4.getString("APELLIDO"), obj4.getString("CARRERA"), obj4.getString("PASSWORD"));
         }
         if(obj2.has("ELIMINAR_USUARIO")){
-            JSONObject obj4 = new JSONObject(obj2.get("ELIMINAR_USUARIO"));
+            JSONObject obj4 = new JSONObject(obj2.get("ELIMINAR_USUARIO").toString());
             mains.usuario.drop_usr(obj4.getInt("CARNET"));
         }
         if(obj2.has("EDITAR_USUARIO")){
-            JSONObject obj4 = new JSONObject(obj2.get("EDITAR_USUARIO"));
+            JSONObject obj4 = new JSONObject(obj2.get("EDITAR_USUARIO").toString());
             mains.usuario.edit_usr(obj4.getInt("CARNET"), obj4.getString("NOMBRE"), obj4.getString("APELLIDO"), obj4.getString("CARRERA"), obj4.getString("PASSWORD"));
         }
         if(obj2.has("ELIMINAR_CATEGORIA")){
-            JSONObject obj4 = new JSONObject(obj2.get("ELIMINAR_CATEGORIA"));
+            JSONObject obj4 = new JSONObject(obj2.get("ELIMINAR_CATEGORIA").toString());
             mains.ctegoria.delete(obj4.getString("NOMBRE"));
         }
         if(obj2.has("CREAR_CATEGORIA")){
-            JSONObject obj4 = new JSONObject(obj2.get("CREAR_CATEGORIA"));
+            JSONObject obj4 = new JSONObject(obj2.get("CREAR_CATEGORIA").toString());
             mains.ctegoria.insert(obj4.getString("NOMBRE"), obj4.getInt("CARNET"));
         }
         if(obj2.has("CREAR_LIBRO")){
-            JSONObject obj4 = new JSONObject(obj2.get("CREAR_LIBRO"));
+            JSONObject obj4 = new JSONObject(obj2.get("CREAR_LIBRO").toString());
             mains.libro_aux.insert_l(obj4.getInt("ISBN"), obj4.getString("TITULO"), obj4.getString("AUTOR"), obj4.getString("EDITORIAL"), obj4.getInt("ANIO"), obj4.getString("EDICION"), obj4.getString("CATEGORIA"), obj4.getString("IDIOMA"), obj4.getInt("CARNET"));
         }
         if(obj2.has("ELIMINAR_LIBRO")){
-            JSONObject obj4 = new JSONObject(obj2.get("ELIMINAR_LIBRO"));
+            JSONObject obj4 = new JSONObject(obj2.get("ELIMINAR_LIBRO").toString());
             mains.libro_aux.del_libro(obj4.getInt("ISBN"));
         }
         //falta lo masivo
         //insertmos el bloque
-        mains.gbloque.nuevo_bloque(obj.getInt("INDEX"), obj.getString("TIMESTAMP"), obj.getString("DATA"), obj.getInt("NONCE"), obj.getString("PREVIOUSHASH"), obj.getString("HASH"));
+        mains.gbloque.nuevo_bloque(obj.getInt("INDEX"), obj.getString("TIMESTAMP"), obj.get("DATA").toString(), obj.getInt("NONCE"), obj.getString("PREVIOUSHASH"), obj.getString("HASH"));
         
         
     }
