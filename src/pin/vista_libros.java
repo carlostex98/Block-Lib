@@ -190,16 +190,22 @@ public class vista_libros extends javax.swing.JFrame {
         if (s) {
             //edicion
             if (r == 1) {
-                
+
             } else if (r == 2) {
                 //eliminar
                 DefaultTableModel model = (DefaultTableModel) tablis.getModel();
                 int s = tablis.getSelectedRow();
                 String sl = tablis.getValueAt(s, 0).toString();
-                mains.libro_aux.del_libro(Integer.parseInt(sl));
-                JOptionPane.showMessageDialog(null, "El libro: " + sl + ", fue seleccionado para eliminar");
-                mains.genera.libro_elimina(Integer.parseInt(sl));
-                
+                if (mains.libro_aux.ret_carnet(s) == mains.nop.carnet) {
+                    //puede
+                    mains.libro_aux.del_libro(Integer.parseInt(sl));
+                    JOptionPane.showMessageDialog(null, "El libro: " + sl + ", fue seleccionado para eliminar");
+                    mains.genera.libro_elimina(Integer.parseInt(sl));
+                } else {
+                    //no puede
+                    JOptionPane.showMessageDialog(null, "El libro: " + sl + ", no se puede eliminar el libro porque usted no es el propietario del libro");
+                }
+
                 cln();
                 load_b();
             }
@@ -224,7 +230,7 @@ public class vista_libros extends javax.swing.JFrame {
                 Object[] cc = {vista.isbn, vista.titulo};
                 DefaultTableModel model = (DefaultTableModel) tablis.getModel();
                 model.addRow(cc);
-                
+
             }
             vista = vista.sig;
         }

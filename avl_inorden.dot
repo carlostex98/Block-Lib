@@ -1,11 +1,23 @@
 digraph sls{
 node [shape=record];
-pompeya[label="pompeya " ]; 
-pompom[label="pompom " ]; 
-pompeya ->pompom
-;tacubaya[label="tacubaya " ]; 
-pompom ->tacubaya
-;tlacuache[label="tlacuache " ]; 
-tacubaya ->tlacuache
+Biografia[label="Biografia " ]; 
+Consulta[label="Consulta " ]; 
+Biografia ->Consulta
+;Drama[label="Drama " ]; 
+Consulta ->Drama
+;Ensayo[label="Ensayo " ]; 
+Drama ->Ensayo
+;Informativos[label="Informativos " ]; 
+Ensayo ->Informativos
+;Literatura[label="Literatura " ]; 
+Informativos ->Literatura
+;Lírico[label="Lírico " ]; 
+Literatura ->Lírico
+;Revista[label="Revista " ]; 
+Lírico ->Revista
+;Sagas[label="Sagas " ]; 
+Revista ->Sagas
+;Épico[label="Épico " ]; 
+Sagas ->Épico
 ;
 }

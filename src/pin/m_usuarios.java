@@ -93,6 +93,23 @@ public class m_usuarios {
         return encontrado;
     }
     
+    public boolean existee(int carnet){
+        boolean n=false;
+        int md=carnet%tmx;
+        usuarios actual=ret_indice(md).primero_usr;
+        usuarios encontrado=null;
+        while(actual!=null){
+            if(actual.carnet==carnet){
+                encontrado=actual;
+                n=true;
+                break;
+            }else{
+                actual=actual.siguiente;
+            }
+        }
+        return n;
+    }
+    
     public void edit_usr(int carnet, String nombre, String apellido, String carrera, String pass){
         String hpass=getMd5(pass);
         int md=carnet%tmx;

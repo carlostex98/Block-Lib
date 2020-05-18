@@ -3,6 +3,7 @@ package pin;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.JOptionPane;
+import org.json.JSONObject;
 
 public class m_categorias {
 
@@ -28,17 +29,32 @@ public class m_categorias {
         }
         return n;
     }
-    
-    public categoria find(String nombre) {
+    public categoria ext(String nombre) {
         categoria current = root;
+        boolean n = false;
         while (current != null) {
-            if (current.nombre == nombre) {
+            if (current.nombre.equals(nombre)) {
+                n = true;
                 break;
             }
             int compare = current.nombre.compareTo(nombre);            
             current = compare < 0 ? current.der : current.izq;
         }
         return current;
+    }
+    
+    public boolean find(String nombre) {
+        categoria current = root;
+        boolean f=false;
+        while (current != null) {
+            if (current.nombre == nombre) {
+                f=true;
+                break;
+            }
+            int compare = current.nombre.compareTo(nombre);            
+            current = compare < 0 ? current.der : current.izq;
+        }
+        return f;
     }
 
     public void insert(String nombre, int carnet) {
@@ -66,7 +82,7 @@ public class m_categorias {
             node.der = insert(node.der, nombre, carnet);
         } else {
             //llave duplicada
-            JOptionPane.showMessageDialog(null, "La categoria ya existe: " + nombre);
+            
         }
         return rebalance(node);
     }
@@ -323,5 +339,12 @@ public class m_categorias {
         mains.libro_aux.primero = current.primero;
         mains.libro_aux.ultimo = current.ultimo;
     }
+    
+    
+    
+    
+    
+    
+    
     
 }

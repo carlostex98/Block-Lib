@@ -8,7 +8,7 @@ public class Btree {
     String u;
     static int orden = 5;
     public Node root;
-    int T = 2;
+    int T = 3;
 
     Btree() {
         // new root
@@ -54,7 +54,8 @@ public class Btree {
     public void Insertx(int key) {
         arregla_raiz();
         Node r = root;
-        if (r.numberOfNodes == 2 * T - 1) {
+        if (r.numberOfNodes == (2 * T - 1)-1) {
+            //System.out.println("yes");
             Node s = new Node();
             root = s;
             s.isLeaf = false;
@@ -67,13 +68,12 @@ public class Btree {
         }
     }
 
-    public void arregla_raiz(){
-        if(root==null){
-            root=new Node();
+    public void arregla_raiz() {
+        if (root == null) {
+            root = new Node();
         }
     }
-    
-    
+
     final private void _Insert(Node x, int k) {
 
         if (x.isLeaf) {
@@ -88,14 +88,15 @@ public class Btree {
             x.numberOfNodes = x.numberOfNodes + 1;
         } else {
             int i = 0;
-            for (i = x.numberOfNodes - 1; i >= 0 && k < x.key[i]; i--) {
+            for (i = x.numberOfNodes - 1; i >= 0 && x.key[i] > k; i--) {
+                //solo resta
             }
-            ;
+            
             i++;
             Node tmp = x.children[i];
-            if (tmp.numberOfNodes == 2 * T - 1) {
+            if (tmp.numberOfNodes == (2 * T - 1)-1) {
                 Split(x, i, tmp);
-                if (k > x.key[i]) {
+                if (x.key[i]<k) {
                     i++;
                 }
             }
@@ -107,8 +108,8 @@ public class Btree {
     private void Split(Node x, int pos, Node y) {
         Node z = new Node();
         z.isLeaf = y.isLeaf;
-        z.numberOfNodes = T - 1;
-        for (int j = 0; j < T - 1; j++) {
+        z.numberOfNodes = T - 1-1;
+        for (int j = 0; j < T - 1-1; j++) {
             z.key[j] = y.key[j + T];
         }
         if (!y.isLeaf) {
@@ -129,13 +130,11 @@ public class Btree {
         x.numberOfNodes = x.numberOfNodes + 1;
     }
 
-
-    
-    public void nombrar(Node n){
-        n.name="node";
+    public void nombrar(Node n) {
+        n.name = "node";
         for (int i = 0; i < n.numberOfNodes; i++) {
             //System.out.print(n.getValue(i) + " ");
-            n.name+=Integer.toString(n.getValue(i));
+            n.name += Integer.toString(n.getValue(i));
         }
 
         if (!n.isLeaf) {
@@ -147,17 +146,18 @@ public class Btree {
             }
         }
     }
-    public void crea_nodos(Node n){
-        u+=n.name+"[label=\"";
+
+    public void crea_nodos(Node n) {
+        u += n.name + "[label=\"";
         for (int i = 0; i < n.numberOfNodes; i++) {
-            if(i==n.numberOfNodes-1){
-                u+="<f"+Integer.toString(i)+">|"+Integer.toString(n.getValue(i))+"\\n"+mains.libro_aux.ret_nombre(n.getValue(i))+"|<f"+Integer.toString(i+1)+">";
-            }else{
-                u+="<f"+Integer.toString(i)+">|"+Integer.toString(n.getValue(i))+"\\n"+mains.libro_aux.ret_nombre(n.getValue(i))+"|";
+            if (i == n.numberOfNodes - 1) {
+                u += "<f" + Integer.toString(i) + ">|" + Integer.toString(n.getValue(i)) + "\\n" + mains.libro_aux.ret_nombre(n.getValue(i)) + "|<f" + Integer.toString(i + 1) + ">";
+            } else {
+                u += "<f" + Integer.toString(i) + ">|" + Integer.toString(n.getValue(i)) + "\\n" + mains.libro_aux.ret_nombre(n.getValue(i)) + "|";
             }
-            
+
         }
-        u+="\"];\n";
+        u += "\"];\n";
         if (!n.isLeaf) {
             for (int j = 0; j <= n.numberOfNodes; j++) {
                 if (n.getChild(j) != null) {
@@ -167,13 +167,14 @@ public class Btree {
             }
         }
     }
-    public void relaciones(Node n){
+
+    public void relaciones(Node n) {
         //aca esta lo chido de las relaciones ajajaj
         //u+=n.name;
         for (int i = 0; i <= n.numberOfNodes; i++) {
             //idk
-            if(n.getChild(i)!=null){
-                u+=n.name+":f"+Integer.toString(i)+"->"+n.getChild(i).name+";\n";
+            if (n.getChild(i) != null) {
+                u += n.name + ":f" + Integer.toString(i) + "->" + n.getChild(i).name + ";\n";
             }
         }
         if (!n.isLeaf) {
@@ -185,30 +186,29 @@ public class Btree {
             }
         }
     }
-    
-    
-    public void graficar_b() throws InterruptedException{
-        u="";
+
+    public void graficar_b() throws InterruptedException {
+        u = "";
         nombrar(root);
-        
+
         //System.out.println(u);
-        try{
+        try {
             PrintWriter writer = new PrintWriter("arbol_b.dot", "UTF-8");
             writer.println("digraph sls{");
             writer.println("node [shape = record,height=.1];");
-            u="";
+            u = "";
             crea_nodos(root);
             writer.println(u);
-            u="";
+            u = "";
             relaciones(root);
             writer.println(u);
-            u="";
+            u = "";
             writer.println("}");
             writer.close();
             Runtime rt = Runtime.getRuntime();
             Process pr = rt.exec("dot -Tjpg arbol_b.dot -o arbol_b.jpg");
             Thread.sleep(1000);
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

@@ -59,9 +59,9 @@ public class m_clientes {
         }
     }
     
-    public void reporte_clientes(){
+    public void reporte_clientes() throws InterruptedException{
         try{
-            PrintWriter writer = new PrintWriter("avl.dot", "UTF-8");
+            PrintWriter writer = new PrintWriter("online.dot", "UTF-8");
             writer.println("digraph sls{");
             writer.println("node [shape=record];");
             cliente aux = primero;
@@ -73,6 +73,9 @@ public class m_clientes {
             }
             writer.println("}");
             writer.close();
+            Runtime rt = Runtime.getRuntime();
+            Process pr = rt.exec("dot -Tjpg online.dot -o online.jpg");
+            Thread.sleep(1000);
         }catch (IOException e) {
             e.printStackTrace();
         }

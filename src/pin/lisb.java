@@ -121,6 +121,20 @@ public class lisb {
         }
         return j;
     }
+    
+    public int ret_carnet(int isbn) {
+        int j=0;
+        isb visto = primero;
+        while (visto != null) {
+            if (visto.isbn == isbn) {
+                j = visto.carnet;
+                break;
+            } else {
+                visto = visto.sig;
+            }
+        }
+        return j;
+    }
 
     public void print_jop(int isbn) {
         String j = "";

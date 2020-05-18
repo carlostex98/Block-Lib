@@ -1,36 +1,10 @@
 digraph sls{
 node [shape = record,height=.1];
-node10842[label="<f0>|10842\nIntroducción a la ética|<f1>"];
-node10775[label="<f0>|10775\nProducción higiénica de la leche cruda; una guía para la pequeña y mediana empresa|<f1>"];
-node10773[label="<f0>|10773\nProcesamiento de carnes y embutidos; elaboración, estandarización, control de calidad|<f1>"];
-node10772[label="<f0>|10772\nLas Ventas en el mundo actual|<f1>"];
-node1077310774[label="<f0>|10773\nProcesamiento de carnes y embutidos; elaboración, estandarización, control de calidad|<f1>|10774\nOptimización de rendimiento y aseguramiento de inocuidad en la industria de quesería; una guía para la pequeña y mediana empresa|<f2>"];
-node10786[label="<f0>|10786\nLa idea del hombre|<f1>"];
-node10783[label="<f0>|10783\nMoral para intelectuales|<f1>"];
-node10840[label="<f0>|10840\nConstitución pastoral Gaudium et spes, sobre la Iglesia en el mundo actual|<f1>"];
-node10848[label="<f0>|10848\nHistoria de la provincia de San Vicente de Chiapa y Guatemala de la orden de Predicadores|<f1>"];
-node10846[label="<f0>|10846\nEducación política nacional|<f1>"];
-node10844[label="<f0>|10844\nEl ocaso de un régimen|<f1>"];
-node10847[label="<f0>|10847\nDe hombres sociales y movimientos políticos / C. Wright Mills.|<f1>"];
-node1092810932[label="<f0>|10928\nCómo resolver el problema de falta de tiempo|<f1>|10932\nPan Am: an airline and its aircraft|<f2>"];
-node10927[label="<f0>|10927\nEvaluación de impacto en formación empresarial ; el caso FUNDES|<f1>"];
-node10930[label="<f0>|10930\nPsicología aplicada a la enseñanza|<f1>"];
-node1093310934[label="<f0>|10933\nLa Mujer de pelo largo / Leonor Paz y Paz G.|<f1>|10934\nEl libro de la piedad y de la muerte|<f2>"];
+node10828[label="<f0>|10828\nISO 9000; auditorías internas de la calidad en la pequeña y mediana empresa|<f1>"];
+node1082610827[label="<f0>|10826\nLas Claves de la eficacia empresarial; un reto a los empresarios Españoles|<f1>|10827\nLa Fe explicada / Leo J. Trese.|<f2>"];
+node108941089610902[label="<f0>|10894\nIntroducción al estudio de la música|<f1>|10896\nSociología de la educación|<f2>|10902\nEl hombre y el dinero: (vistos a la luz de la enseñanza de la Biblia y el Evangelio) / Jacques Ellul ; versión castellana Juan Gil Albert.|<f3>"];
 
-node10842:f0->node10775;
-node10842:f1->node10848;
-node10775:f0->node10773;
-node10775:f1->node10786;
-node10773:f0->node10772;
-node10773:f1->node1077310774;
-node10786:f0->node10783;
-node10786:f1->node10840;
-node10848:f0->node10846;
-node10848:f1->node1092810932;
-node10846:f0->node10844;
-node10846:f1->node10847;
-node1092810932:f0->node10927;
-node1092810932:f1->node10930;
-node1092810932:f2->node1093310934;
+node10828:f0->node1082610827;
+node10828:f1->node108941089610902;
 
 }

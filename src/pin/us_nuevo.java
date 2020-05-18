@@ -125,16 +125,20 @@ public class us_nuevo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        int a=Integer.parseInt(carnet.getText());
-        String b=nombre.getText();
-        String c=apellido.getText();
-        String d=carrera.getText();
-        String e=pass.getText();
-        mains.usuario.agregar_usuario(a, b, c, d, e);
-        JOptionPane.showMessageDialog(null,"Usuario creado");
-        mains.genera.envia_usr(a, b, c, d, e);
-        
-        
+        int a = Integer.parseInt(carnet.getText());
+        String b = nombre.getText();
+        String c = apellido.getText();
+        String d = carrera.getText();
+        String e = pass.getText();
+        if (mains.usuario.existee(a)) {
+            JOptionPane.showMessageDialog(null, "Usuario ya existe");
+        } else {
+            mains.usuario.agregar_usuario(a, b, c, d, e);
+            JOptionPane.showMessageDialog(null, "Usuario creado");
+            mains.genera.envia_usr(a, b, c, d, e);
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
