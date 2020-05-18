@@ -11,6 +11,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -385,6 +388,25 @@ public class escritorio extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         mains.x.general();
+        mains.state = 99;
+        try {
+            URL url = new URL("http://502tec.com/eddx/index.php?a=5&b=0");
+            URLConnection conn = url.openConnection();
+            conn.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
+            //System.out.println("Protocol: " + url.toString());
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+            String line;
+            String ee = "";
+            while ((line = in.readLine()) != null) {
+                ee += line;
+            }
+            in.close();
+            
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }//GEN-LAST:event_formWindowClosing
 
     /**

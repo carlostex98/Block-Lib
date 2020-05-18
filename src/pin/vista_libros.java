@@ -190,13 +190,7 @@ public class vista_libros extends javax.swing.JFrame {
         if (s) {
             //edicion
             if (r == 1) {
-                //editar
-                DefaultTableModel model = (DefaultTableModel) tablis.getModel();
-                int s = tablis.getSelectedRow();
-                String sl = tablis.getValueAt(s, 0).toString();
-                edit_libro n = new edit_libro(mains.libro_aux.ret_node(Integer.parseInt(sl)));
-                n.setVisible(true);
-                //llenar_cat(mains.ctegoria.root);
+                
             } else if (r == 2) {
                 //eliminar
                 DefaultTableModel model = (DefaultTableModel) tablis.getModel();
@@ -204,7 +198,7 @@ public class vista_libros extends javax.swing.JFrame {
                 String sl = tablis.getValueAt(s, 0).toString();
                 mains.libro_aux.del_libro(Integer.parseInt(sl));
                 JOptionPane.showMessageDialog(null, "El libro: " + sl + ", fue seleccionado para eliminar");
-
+                mains.genera.libro_elimina(Integer.parseInt(sl));
                 cln();
                 load_b();
             }

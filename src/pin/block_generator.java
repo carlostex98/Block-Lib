@@ -43,6 +43,8 @@ public class block_generator {
         
         mains.gbloque.nuevo_bloque(index, tmst, data, nonce, phash, hactual);
         //send to service
+        mains.state=3;
+        mains.content=obj.toString();
     }
 
     public void elim_cat(String cat) {
@@ -79,6 +81,8 @@ public class block_generator {
         
         mains.gbloque.nuevo_bloque(index, tmst, data, nonce, phash, hactual);
         //send to service
+        mains.state=3;
+        mains.content=obj.toString();
     }
 
     public void envia_usr(int carnet, String nombre, String apellido, String carrera, String pass) {
@@ -120,6 +124,8 @@ public class block_generator {
         
         mains.gbloque.nuevo_bloque(index, tmst, data, nonce, phash, hactual);
         //send to service
+        mains.state=3;
+        mains.content=obj.toString();
     }
 
     public void elim_usr(int carnet) {
@@ -158,6 +164,8 @@ public class block_generator {
         
         mains.gbloque.nuevo_bloque(index, tmst, data, nonce, phash, hactual);
         //send to service
+        mains.state=3;
+        mains.content=obj.toString();
     }
 
     public void mod_usr(int carnet, String nombre, String apellido, String carrera, String pass) {
@@ -198,6 +206,8 @@ public class block_generator {
         
         mains.gbloque.nuevo_bloque(index, tmst, data, nonce, phash, hactual);
         //send to service
+        mains.state=3;
+        mains.content=obj.toString();
     }
 
     public void libro_elimina(int isbn) {
@@ -235,6 +245,10 @@ public class block_generator {
         
         mains.gbloque.nuevo_bloque(index, tmst, data, nonce, phash, hactual);
         //send to service
+        mains.content=obj.toString();
+        mains.state=3;
+        //System.out.println(obj.toString());
+        
     }
 
     public void libro_crea(int isbn, String titulo, String autor, String editorial, int anio, String edicion, String cat, String idiom, int carnet) {
@@ -279,6 +293,8 @@ public class block_generator {
         
         mains.gbloque.nuevo_bloque(index, tmst, data, nonce, phash, hactual);
         //send to service
+        mains.state=3;
+        mains.content=obj.toString();
     }
 
     public void recibe_bloque(String cuerpo) {
@@ -290,7 +306,7 @@ public class block_generator {
         //por ultimo los ingresa la lista de blockchain
         JSONObject obj = new JSONObject(cuerpo);
         
-        JSONObject obj2 = new JSONObject(obj.get("DATA"));
+        JSONObject obj2 = new JSONObject(obj.get("DATA").toString());
         if(obj2.has("CREAR_USUARIO")){
             JSONObject obj4 = new JSONObject(obj2.get("CREAR_USUARIO"));
             mains.usuario.agregar_usuario(obj4.getInt("CARNET"), obj4.getString("NOMBRE"), obj4.getString("APELLIDO"), obj4.getString("CARRERA"), obj4.getString("PASSWORD"));

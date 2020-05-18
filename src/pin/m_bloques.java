@@ -16,8 +16,9 @@ public class m_bloques {
             primero=ultimo=nuevo;
         }else{
             ultimo.sig=nuevo;
-            nuevo=ultimo;
+            ultimo=nuevo;
         }
+        
     }
     public bloques ret_ultimo(){
         return ultimo;

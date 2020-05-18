@@ -56,8 +56,6 @@ public class lisb {
         mains.cat_curr.cuenta = mains.cat_curr.cuenta - 1;
         while (vista != null) {
             if (vista.isbn == isbn) {
-                //elimina
-                //System.out.println(vista.isbn);
                 if (vista == primero) {
                     if (vista == ultimo) {
                         primero = ultimo = null;
@@ -83,6 +81,7 @@ public class lisb {
                 isb vista2 = primero;
                 while (vista2 != null) {
                     mains.libros.Insertx(vista2.isbn);
+                    vista2=vista2.sig;
                 }
                 mains.cat_curr.raiz = mains.libros.root;
                 break;

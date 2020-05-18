@@ -2,6 +2,7 @@ package pin;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import org.json.JSONArray;
 
 public class m_clientes {
 
@@ -80,6 +81,15 @@ public class m_clientes {
         String ff="";
         ff=ed.replace(".", "");
         return ff;
+    }
+    
+    public void read_clientes(String gt){
+        primero=ultimo=null;
+        JSONArray arr = new JSONArray(gt);
+        for (int i = 0; i < arr.length(); i++) {
+            String clt = arr.getJSONObject(i).getString("ip");//int
+            agregar(clt);
+        }
     }
 
 }
