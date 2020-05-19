@@ -335,6 +335,14 @@ public class block_generator {
             JSONObject obj4 = new JSONObject(obj2.get("ELIMINAR_LIBRO").toString());
             mains.libro_aux.del_libro(obj4.getInt("ISBN"));
         }
+        if(obj2.has("MASIVO_LIBROS")){
+            String ss=obj2.get("MASIVO_LIBROS").toString();
+            mains.x.lee_libros(ss);
+        }
+        if(obj2.has("MASIVO_USUARIOS")){
+            String ss=obj2.get("MASIVO_USUARIOS").toString();
+            mains.x.lee_usuarios(ss);
+        }
         //falta lo masivo
         //insertmos el bloque
         mains.gbloque.nuevo_bloque(obj.getInt("INDEX"), obj.getString("TIMESTAMP"), obj.get("DATA").toString(), obj.getInt("NONCE"), obj.getString("PREVIOUSHASH"), obj.getString("HASH"));
@@ -378,4 +386,80 @@ public class block_generator {
         }
     }
 
+    public void masivo_usr(String dte) {
+        //crea y luego inserta
+        JSONObject obj = new JSONObject();
+        int index = 0;
+        String tmst = "";
+        tmst = new SimpleDateFormat("dd-MM-yyyy::HH:mm:ss").format(new java.util.Date());
+        String data = "";
+        int nonce = 0;
+        String phash = "0000";
+        String hactual = "";
+        bloques aux = mains.gbloque.ret_ultimo();
+        if (aux != null) {
+            phash = aux.hh;
+            index = aux.id + 1;
+        }
+        
+        
+        
+        
+        JSONObject data1 = new JSONObject();
+        data1.put("MASIVO_USUARIOS", dte);
+        
+        nonce=nonce_calc(Integer.toString(index)+tmst+phash+data1.toString());
+        //System.out.println(nonce);
+        hactual=sha256(Integer.toString(index)+tmst+phash+data1.toString()+Integer.toString(nonce));
+        obj.put("INDEX", index);
+        obj.put("TIMESTAMP", tmst);
+        obj.put("NONCE", nonce);
+        obj.put("DATA", data1);
+        obj.put("PREVIOUSHASH", phash);
+        obj.put("HASH", hactual);
+        data=data1.toString();
+        
+        mains.gbloque.nuevo_bloque(index, tmst, data, nonce, phash, hactual);
+        //send to service
+        mains.state=3;
+        mains.content=obj.toString();
+    }
+    
+    
+    public void masivo_libs(String datax) {
+        //crea y luego inserta
+        JSONObject obj = new JSONObject();
+        int index = 0;
+        String tmst = "";
+        tmst = new SimpleDateFormat("dd-MM-yyyy::HH:mm:ss").format(new java.util.Date());
+        String data = "";
+        int nonce = 0;
+        String phash = "0000";
+        String hactual = "";
+        bloques aux = mains.gbloque.ret_ultimo();
+        if (aux != null) {
+            phash = aux.hh;
+            index = aux.id + 1;
+        }
+
+        JSONObject data1 = new JSONObject();
+        data1.put("MASIVO_LIBROS", datax);
+        
+        nonce=nonce_calc(Integer.toString(index)+tmst+phash+data1.toString());
+        //System.out.println(nonce);
+        hactual=sha256(Integer.toString(index)+tmst+phash+data1.toString()+Integer.toString(nonce));
+        obj.put("INDEX", index);
+        obj.put("TIMESTAMP", tmst);
+        obj.put("NONCE", nonce);
+        obj.put("DATA", data1);
+        obj.put("PREVIOUSHASH", phash);
+        obj.put("HASH", hactual);
+        data=data1.toString();
+        
+        mains.gbloque.nuevo_bloque(index, tmst, data, nonce, phash, hactual);
+        //send to service
+        mains.state=3;
+        mains.content=obj.toString();
+    }
+    
 }

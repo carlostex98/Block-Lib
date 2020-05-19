@@ -196,7 +196,7 @@ public class vista_libros extends javax.swing.JFrame {
                 DefaultTableModel model = (DefaultTableModel) tablis.getModel();
                 int s = tablis.getSelectedRow();
                 String sl = tablis.getValueAt(s, 0).toString();
-                if (mains.libro_aux.ret_carnet(s) == mains.nop.carnet) {
+                if (mains.libro_aux.ret_carnet(Integer.toString(sl)) == mains.nop.carnet) {
                     //puede
                     mains.libro_aux.del_libro(Integer.parseInt(sl));
                     JOptionPane.showMessageDialog(null, "El libro: " + sl + ", fue seleccionado para eliminar");

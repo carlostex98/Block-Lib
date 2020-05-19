@@ -7,6 +7,7 @@ package pin;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,13 +36,15 @@ public class blockchain extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Blockchain");
 
         jButton1.setText("Mi conexion");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Reporte bloques");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -56,8 +59,6 @@ public class blockchain extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-
-        jButton4.setText("Log");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,9 +76,7 @@ public class blockchain extends javax.swing.JFrame {
                                 .addGap(27, 27, 27)
                                 .addComponent(jButton2)
                                 .addGap(27, 27, 27)
-                                .addComponent(jButton3)
-                                .addGap(27, 27, 27)
-                                .addComponent(jButton4)))
+                                .addComponent(jButton3)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -92,8 +91,7 @@ public class blockchain extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jButton3))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
@@ -116,13 +114,18 @@ public class blockchain extends javax.swing.JFrame {
         // TODO add your handling code here:
         pin.mains.img="online.jpg";
         try {
-            pin.mains.ctegoria.reporte_avl();
+            pin.mains.clt.reporte_clientes();
         } catch (InterruptedException ex) {
             Logger.getLogger(reportes_avl.class.getName()).log(Level.SEVERE, null, ex);
         }
         image_view nuevo = new image_view();
         nuevo.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null,"IP: "+mains.mip);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,7 +166,6 @@ public class blockchain extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables

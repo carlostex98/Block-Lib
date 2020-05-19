@@ -70,6 +70,7 @@ public class m_clientes {
                 if(aux.siguiente!=null){
                     writer.println("ip"+rmp(aux.ip)+" -> ip"+rmp(aux.siguiente.ip)+"; \n");
                 }
+                aux=aux.siguiente;
             }
             writer.println("}");
             writer.close();

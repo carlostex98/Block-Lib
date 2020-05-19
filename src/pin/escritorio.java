@@ -87,12 +87,13 @@ public class escritorio extends javax.swing.JFrame {
             }
         });
 
+        tablis.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         tablis.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nombre Categoria"
+                "Nombre categoria"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -132,6 +133,11 @@ public class escritorio extends javax.swing.JFrame {
         });
 
         jButton11.setText("Blockchain");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         n_user.setText("Nuevo usuario");
         n_user.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +153,7 @@ public class escritorio extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Carga maisva Usuarios");
+        jButton2.setText("Carga masiva usuarios");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -236,8 +242,8 @@ public class escritorio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
-                    .addComponent(jButton11))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -259,19 +265,14 @@ public class escritorio extends javax.swing.JFrame {
     }//GEN-LAST:event_n_catActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        pin.mains.img = "hasheo.jpg";
         try {
-            //this shit reports users
             pin.mains.usuario.reporte_hash();
         } catch (InterruptedException ex) {
-            Logger.getLogger(escritorio.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        File n = new File("hasheo.jpg");
-        try {
-            Desktop.getDesktop().open(n);
-        } catch (IOException ex) {
             Logger.getLogger(reportes_avl.class.getName()).log(Level.SEVERE, null, ex);
         }
+        image_view nuevo = new image_view();
+        nuevo.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -375,6 +376,7 @@ public class escritorio extends javax.swing.JFrame {
                     em += st;
                 }
                 //System.out.println(em);
+                mains.genera.masivo_libs(em);
                 mains.x.lee_libros(em);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(escritorio.class.getName()).log(Level.SEVERE, null, ex);
@@ -402,7 +404,7 @@ public class escritorio extends javax.swing.JFrame {
                 while ((st = br.readLine()) != null) {
                     em += st;
                 }
-                //System.out.println(em);
+                mains.genera.masivo_usr(em);
                 mains.x.lee_usuarios(em);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(escritorio.class.getName()).log(Level.SEVERE, null, ex);
@@ -417,6 +419,7 @@ public class escritorio extends javax.swing.JFrame {
         // TODO add your handling code here:
         mains.x.general();
         mains.state = 99;
+        
         try {
             URL url = new URL("http://502tec.com/eddx/index.php?a=5&b=0");
             URLConnection conn = url.openConnection();
@@ -435,6 +438,12 @@ public class escritorio extends javax.swing.JFrame {
             System.out.println(e);
         }
     }//GEN-LAST:event_formWindowClosing
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+        blockchain n = new blockchain();
+        n.setVisible(true);
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     /**
      * @param args the command line arguments

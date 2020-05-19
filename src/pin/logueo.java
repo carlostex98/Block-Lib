@@ -25,6 +25,9 @@ public class logueo extends javax.swing.JFrame {
      */
     public logueo() {
         initComponents();
+        usr.setEnabled(false);
+        psx.setEnabled(false);
+        btn.setEnabled(false);
     }
 
     /**
@@ -38,12 +41,12 @@ public class logueo extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        btn = new javax.swing.JButton();
         usr = new javax.swing.JTextField();
         psx = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        strt = new javax.swing.JButton();
+        ips = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -57,10 +60,10 @@ public class logueo extends javax.swing.JFrame {
 
         jLabel1.setText("Inicio de sesion");
 
-        jButton1.setText("Ingresar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn.setText("Ingresar");
+        btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnActionPerformed(evt);
             }
         });
 
@@ -70,14 +73,19 @@ public class logueo extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Empezar servicio");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        strt.setText("Empezar servicio");
+        strt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                strtActionPerformed(evt);
             }
         });
 
-        jButton3.setText("ingresar IP");
+        ips.setText("ingresar IP");
+        ips.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ipsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,13 +102,13 @@ public class logueo extends javax.swing.JFrame {
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE))
                             .addComponent(usr)
                             .addComponent(psx, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator2))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(strt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)))
+                        .addComponent(ips)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -115,13 +123,13 @@ public class logueo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(psx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(btn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(strt)
+                    .addComponent(ips))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -132,7 +140,7 @@ public class logueo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_usrActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionPerformed
         //mandamos a preguntar si exixste
         usuarios n = pin.mains.usuario.existe_usr_loguin(Integer.parseInt(usr.getText()), psx.getText());
         if (n == null) {
@@ -144,7 +152,7 @@ public class logueo extends javax.swing.JFrame {
             e.setVisible(true);
             this.dispose();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
@@ -177,11 +185,32 @@ public class logueo extends javax.swing.JFrame {
         //
     }//GEN-LAST:event_formWindowClosing
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void strtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_strtActionPerformed
         // TODO add your handling code here:
         mains.state = 1;
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(logueo.class.getName()).log(Level.SEVERE, null, ex);
+        }
         JOptionPane.showMessageDialog(null, "La IP es: "+mains.mip);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        usr.setEnabled(true);
+        psx.setEnabled(true);
+        btn.setEnabled(true);
+        ips.setEnabled(false);
+        strt.setEnabled(false);
+    }//GEN-LAST:event_strtActionPerformed
+
+    private void ipsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipsActionPerformed
+        // TODO add your handling code here:
+        String j=JOptionPane.showInputDialog("Ingresa la ip y el puerto. \nEjemplo: 192.168.1.1:3000");
+        mains.state=1;
+        usr.setEnabled(true);
+        psx.setEnabled(true);
+        btn.setEnabled(true);
+        ips.setEnabled(false);
+        strt.setEnabled(false);
+    }//GEN-LAST:event_ipsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,13 +248,13 @@ public class logueo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btn;
+    private javax.swing.JButton ips;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField psx;
+    private javax.swing.JButton strt;
     private javax.swing.JTextField usr;
     // End of variables declaration//GEN-END:variables
 }

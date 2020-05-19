@@ -1,0 +1,19 @@
+digraph sls{
+node [shape=record];
+ip0 [label=" id: 0\nTimestamp: 18-05-2020::19:59:20\n158286Previous hash: 0000\nHash: 0000ffd7f103918be56d5fd85348733c5064c4d9896451e4431aa8f85eb67b9e "];
+ip0 -> ip1; 
+
+ip1 [label=" id: 1\nTimestamp: 18-05-2020::19:59:38\n8662Previous hash: 0000ffd7f103918be56d5fd85348733c5064c4d9896451e4431aa8f85eb67b9e\nHash: 00008be26e67d2d51ab635927842640e9a0f1799a88683d25e51a087214ffbc3 "];
+ip1 -> ip0; 
+
+ip0 [label=" id: 0\nTimestamp: 18-05-2020::19:59:20\n158286Previous hash: 0000\nHash: 0000ffd7f103918be56d5fd85348733c5064c4d9896451e4431aa8f85eb67b9e "];
+ip0 -> ip0; 
+
+ip0 [label=" id: 0\nTimestamp: 18-05-2020::19:59:20\n158286Previous hash: 0000\nHash: 0000ffd7f103918be56d5fd85348733c5064c4d9896451e4431aa8f85eb67b9e "];
+ip0 -> ip1; 
+
+ip1 [label=" id: 1\nTimestamp: 18-05-2020::19:59:38\n8662Previous hash: 0000ffd7f103918be56d5fd85348733c5064c4d9896451e4431aa8f85eb67b9e\nHash: 00008be26e67d2d51ab635927842640e9a0f1799a88683d25e51a087214ffbc3 "];
+ip1 -> ip1; 
+
+ip1 [label=" id: 1\nTimestamp: 18-05-2020::19:59:38\n8662Previous hash: 0000ffd7f103918be56d5fd85348733c5064c4d9896451e4431aa8f85eb67b9e\nHash: 00008be26e67d2d51ab635927842640e9a0f1799a88683d25e51a087214ffbc3 "];
+}

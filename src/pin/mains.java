@@ -34,7 +34,7 @@ public class mains {
         x.lee_datos();
         logueo loguex = new logueo();
         loguex.setVisible(true);
-        concon();
+        //concon();
         
 
     }
@@ -115,7 +115,7 @@ public class mains {
                         ee += line;
                     }
                     in.close();
-                    //mip=ee;
+                    mip=ee;
                     state = 0;//estado de escucha
                 } catch (Exception e) {
                     System.out.println(e);
@@ -125,6 +125,7 @@ public class mains {
             } else if (state == 3) {
                 //manda bloque
                 try {
+                    content=content.replace(" ", "%20");
                     URL url = new URL("http://502tec.com/eddx/index.php?a=3&b=" + content);
                     //System.out.println("http://502tec.com/eddx/index.php?a=3&b="+content);
                     URLConnection conn = url.openConnection();
@@ -143,6 +144,8 @@ public class mains {
                     state = 0;//estado de escucha
                 } catch (Exception e) {
                     System.out.println(e);
+                } finally{
+                    content="";
                 }
             }
 

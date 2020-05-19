@@ -38,7 +38,7 @@ public class image_view extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        pou = new javax.swing.JScrollPane();
         jLabel1 = new javax.swing.JLabel();
 
         jButton1.setText("Load");
@@ -48,7 +48,7 @@ public class image_view extends javax.swing.JFrame {
             }
         });
 
-        jScrollPane1.setViewportView(jLabel1);
+        pou.setViewportView(jLabel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,14 +58,14 @@ public class image_view extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 843, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pou, javax.swing.GroupLayout.PREFERRED_SIZE, 843, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pou, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jButton1)
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -80,8 +80,12 @@ public class image_view extends javax.swing.JFrame {
         /*Image img = new ImageIcon(pin.mains.img).getImage();
         ImageIcon img2 = new ImageIcon(img);
         jLabel1.setIcon((Icon) img2);*/
-        ImageIcon imgThisImg = new ImageIcon(mains.img);
-        jLabel1.setIcon(imgThisImg);
+        ImageIcon img;
+        img = new ImageIcon(mains.img);
+        img.getImage().flush();
+        img=new ImageIcon(mains.img);
+        
+        jLabel1.setIcon((Icon) img);
         //jLabel1.revalidate();
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -124,6 +128,6 @@ public class image_view extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane pou;
     // End of variables declaration//GEN-END:variables
 }

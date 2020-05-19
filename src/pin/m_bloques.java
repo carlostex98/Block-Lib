@@ -40,19 +40,20 @@ public class m_bloques {
             while (aux != null) {
                 String data="id: "+Integer.toString(aux.id)+"\\n";
                 data+="Timestamp: "+aux.time+"\\n";
-                data+=Integer.toString(aux.nonce);
+                data+="Nonce: "+Integer.toString(aux.nonce)+"\\n";
                 data+="Previous hash: "+aux.phash+"\\n";
                 data+="Hash: "+aux.hh;
                 writer.println("ip" + Integer.toString(aux.id) + " [label=\" " + data + " \"];");
                 if (aux.sig != null) {
                     writer.println("ip" + Integer.toString(aux.id) + " -> ip" + Integer.toString(aux.sig.id) + "; \n");
                 }
+                aux=aux.sig;
             }
             writer.println("}");
             writer.close();
             //genera grafo
             Runtime rt = Runtime.getRuntime();
-            Process pr = rt.exec("dot -Tjpg bloques.dot -o online.jpg");
+            Process pr = rt.exec("dot -Tjpg bloques.dot -o bloques.jpg");
             Thread.sleep(1000);
             
         } catch (IOException e) {

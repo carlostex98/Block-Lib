@@ -7,85 +7,155 @@ s0i ->s1i;
 s1i [label=" 1 " group = 1];
 s1i ->s2i;
 s1i -> u201503476;
-u201503476[label="Ricardo Cutz\n201503476\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s1i ;u201503476 ; }
+u201503476[label="Ricardo Cutz\n201503476\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];u201503476-> u1;
+u1[label="Juanito Hernandez\n1\ne10adc3949ba59abbe56e057f20f883e  " group = 3 ];{rank=same; s1i ;u201503476 ;u1 ; }
 s2i [label=" 2 " group = 1];
 s2i ->s3i;
 s2i -> u201503477;
-u201503477[label="Juanito Hernandez\n201503477\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s2i ;u201503477 ; }
+u201503477[label="Juanito Hernandez\n201503477\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];u201503477-> u2;
+u2[label="Juanito Hernandez\n2\ne10adc3949ba59abbe56e057f20f883e  " group = 3 ];{rank=same; s2i ;u201503477 ;u2 ; }
 s3i [label=" 3 " group = 1];
 s3i ->s4i;
+s3i -> u3;
+u3[label="Juanito Hernandez\n3\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s3i ;u3 ; }
 s4i [label=" 4 " group = 1];
 s4i ->s5i;
+s4i -> u4;
+u4[label="Juanito Hernandez\n4\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s4i ;u4 ; }
 s5i [label=" 5 " group = 1];
 s5i ->s6i;
+s5i -> u5;
+u5[label="Juanito Hernandez\n5\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s5i ;u5 ; }
 s6i [label=" 6 " group = 1];
 s6i ->s7i;
+s6i -> u6;
+u6[label="Juanito Hernandez\n6\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s6i ;u6 ; }
 s7i [label=" 7 " group = 1];
 s7i ->s8i;
+s7i -> u7;
+u7[label="Juanito Hernandez\n7\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s7i ;u7 ; }
 s8i [label=" 8 " group = 1];
 s8i ->s9i;
+s8i -> u8;
+u8[label="Juanito Hernandez\n8\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s8i ;u8 ; }
 s9i [label=" 9 " group = 1];
 s9i ->s10i;
+s9i -> u9;
+u9[label="Juanito Hernandez\n9\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s9i ;u9 ; }
 s10i [label=" 10 " group = 1];
 s10i ->s11i;
+s10i -> u10;
+u10[label="Juanito Hernandez\n10\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s10i ;u10 ; }
 s11i [label=" 11 " group = 1];
 s11i ->s12i;
+s11i -> u11;
+u11[label="Juanito Hernandez\n11\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s11i ;u11 ; }
 s12i [label=" 12 " group = 1];
 s12i ->s13i;
 s12i -> u201700317;
-u201700317[label="Carlos Tenes\n201700317\n81dc9bdb52d04dc20036dbd8313ed055  " group = 2 ];{rank=same; s12i ;u201700317 ; }
+u201700317[label="Carlos Tenes\n201700317\n81dc9bdb52d04dc20036dbd8313ed055  " group = 2 ];u201700317-> u12;
+u12[label="Juanito Hernandez\n12\ne10adc3949ba59abbe56e057f20f883e  " group = 3 ];{rank=same; s12i ;u201700317 ;u12 ; }
 s13i [label=" 13 " group = 1];
 s13i ->s14i;
+s13i -> u13;
+u13[label="Juanito Hernandez\n13\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s13i ;u13 ; }
 s14i [label=" 14 " group = 1];
 s14i ->s15i;
+s14i -> u14;
+u14[label="Juanito Hernandez\n14\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s14i ;u14 ; }
 s15i [label=" 15 " group = 1];
 s15i ->s16i;
+s15i -> u15;
+u15[label="Juanito Hernandez\n15\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s15i ;u15 ; }
 s16i [label=" 16 " group = 1];
 s16i ->s17i;
+s16i -> u16;
+u16[label="Juanito Hernandez\n16\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s16i ;u16 ; }
 s17i [label=" 17 " group = 1];
 s17i ->s18i;
+s17i -> u17;
+u17[label="Juanito Hernandez\n17\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s17i ;u17 ; }
 s18i [label=" 18 " group = 1];
 s18i ->s19i;
+s18i -> u18;
+u18[label="Juanito Hernandez\n18\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s18i ;u18 ; }
 s19i [label=" 19 " group = 1];
 s19i ->s20i;
+s19i -> u19;
+u19[label="Juanito Hernandez\n19\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s19i ;u19 ; }
 s20i [label=" 20 " group = 1];
 s20i ->s21i;
+s20i -> u20;
+u20[label="Juanito Hernandez\n20\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s20i ;u20 ; }
 s21i [label=" 21 " group = 1];
 s21i ->s22i;
+s21i -> u21;
+u21[label="Juanito Hernandez\n21\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s21i ;u21 ; }
 s22i [label=" 22 " group = 1];
 s22i ->s23i;
+s22i -> u22;
+u22[label="Juanito Hernandez\n22\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s22i ;u22 ; }
 s23i [label=" 23 " group = 1];
 s23i ->s24i;
-s23i -> u202005878;
-u202005878[label="Antonio Hernandez\n202005878\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s23i ;u202005878 ; }
+s23i -> u23;
+u23[label="Juanito Hernandez\n23\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];u23-> u202005878;
+u202005878[label="Antonio Hernandez\n202005878\ne10adc3949ba59abbe56e057f20f883e  " group = 3 ];{rank=same; s23i ;u23 ;u202005878 ; }
 s24i [label=" 24 " group = 1];
 s24i ->s25i;
+s24i -> u24;
+u24[label="Juanito Hernandez\n24\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s24i ;u24 ; }
 s25i [label=" 25 " group = 1];
 s25i ->s26i;
+s25i -> u25;
+u25[label="Juanito Hernandez\n25\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s25i ;u25 ; }
 s26i [label=" 26 " group = 1];
 s26i ->s27i;
+s26i -> u26;
+u26[label="Juanito Hernandez\n26\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s26i ;u26 ; }
 s27i [label=" 27 " group = 1];
 s27i ->s28i;
+s27i -> u27;
+u27[label="Juanito Hernandez\n27\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s27i ;u27 ; }
 s28i [label=" 28 " group = 1];
 s28i ->s29i;
+s28i -> u28;
+u28[label="Juanito Hernandez\n28\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s28i ;u28 ; }
 s29i [label=" 29 " group = 1];
 s29i ->s30i;
+s29i -> u29;
+u29[label="Juanito Hernandez\n29\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s29i ;u29 ; }
 s30i [label=" 30 " group = 1];
 s30i ->s31i;
+s30i -> u30;
+u30[label="Juanito Hernandez\n30\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s30i ;u30 ; }
 s31i [label=" 31 " group = 1];
 s31i ->s32i;
+s31i -> u31;
+u31[label="Juanito Hernandez\n31\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s31i ;u31 ; }
 s32i [label=" 32 " group = 1];
 s32i ->s33i;
+s32i -> u32;
+u32[label="Juanito Hernandez\n32\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s32i ;u32 ; }
 s33i [label=" 33 " group = 1];
 s33i ->s34i;
+s33i -> u33;
+u33[label="Juanito Hernandez\n33\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s33i ;u33 ; }
 s34i [label=" 34 " group = 1];
 s34i ->s35i;
+s34i -> u34;
+u34[label="Juanito Hernandez\n34\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s34i ;u34 ; }
 s35i [label=" 35 " group = 1];
 s35i ->s36i;
+s35i -> u35;
+u35[label="Juanito Hernandez\n35\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s35i ;u35 ; }
 s36i [label=" 36 " group = 1];
 s36i ->s37i;
+s36i -> u36;
+u36[label="Juanito Hernandez\n36\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s36i ;u36 ; }
 s37i [label=" 37 " group = 1];
 s37i ->s38i;
+s37i -> u37;
+u37[label="Juanito Hernandez\n37\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s37i ;u37 ; }
 s38i [label=" 38 " group = 1];
 s38i ->s39i;
 s39i [label=" 39 " group = 1];
