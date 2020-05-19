@@ -34,7 +34,7 @@ public class mains {
         x.lee_datos();
         logueo loguex = new logueo();
         loguex.setVisible(true);
-        //concon();
+        concon();
 
     }
 
