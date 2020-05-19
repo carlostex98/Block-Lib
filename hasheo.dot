@@ -11,9 +11,8 @@ u201503476[label="Ricardo Cutz\n201503476\ne10adc3949ba59abbe56e057f20f883e  " g
 u1[label="Juanito Hernandez\n1\ne10adc3949ba59abbe56e057f20f883e  " group = 3 ];{rank=same; s1i ;u201503476 ;u1 ; }
 s2i [label=" 2 " group = 1];
 s2i ->s3i;
-s2i -> u201503477;
-u201503477[label="Juanito Hernandez\n201503477\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];u201503477-> u2;
-u2[label="Juanito Hernandez\n2\ne10adc3949ba59abbe56e057f20f883e  " group = 3 ];{rank=same; s2i ;u201503477 ;u2 ; }
+s2i -> u2;
+u2[label="Juanito Hernandez\n2\ne10adc3949ba59abbe56e057f20f883e  " group = 2 ];{rank=same; s2i ;u2 ; }
 s3i [label=" 3 " group = 1];
 s3i ->s4i;
 s3i -> u3;
