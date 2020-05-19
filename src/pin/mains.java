@@ -35,7 +35,6 @@ public class mains {
         logueo loguex = new logueo();
         loguex.setVisible(true);
         //concon();
-        
 
     }
 
@@ -115,8 +114,8 @@ public class mains {
                         ee += line;
                     }
                     in.close();
-                    mip=ee;
-                    state = 0;//estado de escucha
+                    mip = ee;
+                    state = 44;//estado de escucha
                 } catch (Exception e) {
                     System.out.println(e);
                 }
@@ -125,7 +124,7 @@ public class mains {
             } else if (state == 3) {
                 //manda bloque
                 try {
-                    content=content.replace(" ", "%20");
+                    content = content.replace(" ", "%20");
                     URL url = new URL("http://502tec.com/eddx/index.php?a=3&b=" + content);
                     //System.out.println("http://502tec.com/eddx/index.php?a=3&b="+content);
                     URLConnection conn = url.openConnection();
@@ -144,8 +143,64 @@ public class mains {
                     state = 0;//estado de escucha
                 } catch (Exception e) {
                     System.out.println(e);
-                } finally{
-                    content="";
+                } finally {
+                    content = "";
+                }
+            } else if (state == 44) {
+                try {
+                    URL url = new URL("http://502tec.com/eddx/index.php?a=2&b=0");
+                    URLConnection conn = url.openConnection();
+                    conn.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
+                    //System.out.println("Protocol: " + url.toString());
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                    String line;
+                    String ee = "";
+                    while ((line = in.readLine()) != null) {
+                        ee += line;
+                    }
+                    in.close();
+                    clt.read_clientes(ee);
+
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+                //bloque ultimo
+                try {
+                    URL url = new URL("http://502tec.com/eddx/index.php?a=4&b=0");
+                    URLConnection conn = url.openConnection();
+                    conn.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
+                    //System.out.println("Protocol: " + url.toString());
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                    String line;
+                    String ee = "";
+                    while ((line = in.readLine()) != null) {
+                        ee += line;
+                    }
+                    in.close();
+
+                    if (gbloque.ultimo == null) {
+                        //no hay bloques
+                        if (!ee.equals("[]")) {
+                            JSONObject obj = new JSONObject(ee);
+                            //genera.recibe_bloque(ee);
+                            gbloque.nuevo_bloque(obj.getInt("INDEX"), obj.getString("TIMESTAMP"), obj.get("DATA").toString(), obj.getInt("NONCE"), obj.getString("PREVIOUSHASH"), obj.getString("HASH"));
+                        }
+                    } else {
+                        if (!ee.equals("[]")) {
+                            //System.out.println(ee);
+                            JSONObject obj = new JSONObject(ee);
+                            if (obj.getInt("INDEX") != gbloque.ultimo.id) {
+                                //genera.recibe_bloque(ee);
+                                gbloque.nuevo_bloque(obj.getInt("INDEX"), obj.getString("TIMESTAMP"), obj.get("DATA").toString(), obj.getInt("NONCE"), obj.getString("PREVIOUSHASH"), obj.getString("HASH"));
+                            }
+                        }
+                    }
+                    state=0;
+                    //clt.read_clientes(ee);
+                } catch (Exception e) {
+                    System.out.println(e);
                 }
             }
 
