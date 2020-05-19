@@ -186,6 +186,7 @@ public class vista_libros extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Haz clic en la categoria a eliminar");
         s = true;
         r = 2;
 
